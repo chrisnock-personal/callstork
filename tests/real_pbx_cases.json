@@ -1,0 +1,49 @@
+{
+  "_comment": "Cases for tests/real_pbx.py. Each number must reach the PBX dialplan described in docs/real-pbx.md: the leaf's inbound-dids rule rewrites 44XXXXXXXXXX to 0XXXXXXXXXX, and lab-failover rewrites 447700900999 to 07700900999 and tries pool 2 (an unreachable member first, then the PBX).",
+  "cases": {
+    "answer_pbx_bye": {
+      "description": "Rings 2 s, answers, plays a prompt, the PBX hangs up",
+      "number": "447700900100",
+      "duration": 9,
+      "expect": {"final": 200, "ringing": true, "pbx_bye": true, "rtp_direct": true}
+    },
+    "answer_uac_bye": {
+      "description": "Answers at once; the caller hangs up after 4 s",
+      "number": "447700900103",
+      "duration": 6,
+      "steps": [[4.0, "bye"]],
+      "expect": {"final": 200, "caller_bye": 200, "rtp_direct": true}
+    },
+    "busy_486": {
+      "description": "Busy: relayed, no failover, ACK absorbed",
+      "number": "447700900101",
+      "duration": 4,
+      "expect": {"final": 486, "ack_absorbed": true}
+    },
+    "unknown_404": {
+      "description": "A number the PBX doesn't have: 404 relayed, no failover",
+      "number": "447700900555",
+      "duration": 4,
+      "expect": {"final": 404, "ack_absorbed": true}
+    },
+    "failover_dead_member": {
+      "description": "Pool 2 lists an unreachable member first: 2 s attempt timeout, then the PBX",
+      "number": "447700900999",
+      "duration": 12,
+      "expect": {"final": 200, "ringing": true, "pbx_bye": true, "rtp_direct": true, "final_after": [3.5, 6.5]}
+    },
+    "cancel_ringing": {
+      "description": "The caller cancels while the PBX rings",
+      "number": "447700900102",
+      "duration": 5,
+      "steps": [[2.0, "cancel"]],
+      "expect": {"final": 487, "ringing": true, "ack_absorbed": true}
+    },
+    "deadline_503": {
+      "description": "The PBX sends 100 Trying only: 503 at the 8 s setup deadline",
+      "number": "447700900104",
+      "duration": 11,
+      "expect": {"final": 503, "final_after": [7.5, 8.7], "ack_absorbed": true}
+    }
+  }
+}

@@ -128,6 +128,9 @@ sudo tcpdump -ni lo 'udp port 6060 or udp port 6061 or udp port 5071 or udp port
 
 ## Checked against a real PBX (2026-11-25)
 
+To repeat this against your own PBX, follow [`docs/real-pbx.md`](../../docs/real-pbx.md)
+(`tests/run_real_pbx.sh`).
+
 The reference was run on a LAN address (`-A PEER_ADDR=… -A LAN_ADDR=…`) with a
 FreePBX 17 / Asterisk 22 box as the pool member, a test caller sending a real
 SDP offer, and a dialplan context with one number per behaviour. All of these
