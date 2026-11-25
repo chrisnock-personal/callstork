@@ -19,7 +19,7 @@ set -uo pipefail
 repo=$(cd "$(dirname "$0")/.." && pwd)
 out=${1:-"$repo/out/kamailio"}
 mode=${REF_MODE:-single}
-container=${REF_CONTAINER:-sip-leaf-ref-suite}
+container=${REF_CONTAINER:-callstork-ref-suite}
 image=${KAMAILIO_IMAGE:-ghcr.io/kamailio/kamailio-ci:latest}
 net=${REF_NET:-host}
 pod=${container}-pod

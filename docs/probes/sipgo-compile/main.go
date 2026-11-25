@@ -7,7 +7,7 @@ import (
 	"github.com/emiago/sipgo/sip"
 )
 
-// Compile-only probe for the sipgo APIs that SIP Leaf Phase 1 needs:
+// Compile-only probe for the sipgo APIs that CallStork Phase 1 needs:
 // a stateful server, a proxy client, Via/Record-Route/Max-Forwards handling,
 // raw Request objects and the debug dumper.
 func main() {
