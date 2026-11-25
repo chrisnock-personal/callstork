@@ -1,0 +1,33 @@
+{
+  "name": "cancel_before_provisional",
+  "description": "CANCEL before the PBX sends its first provisional response.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "silent"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.02,
+      "action": "cancel"
+    }
+  ],
+  "expect": {
+    "final_status": 487,
+    "cancelled": true,
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

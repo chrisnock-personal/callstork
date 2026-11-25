@@ -1,0 +1,30 @@
+=== +00020 ms (unix 1795606730527) SEND udp 127.0.0.1:33667 -> 127.0.0.1:6060 len=1740 redacted=no endpoint=uac
+INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:33667;branch=z9hG4bK2ad3f907da63;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1>;tag=823a6639657d
+To: <sip:447700900999@127.0.0.1>
+Call-ID: b5ba91974a52@127.0.0.1
+CSeq: 1 INVITE
+Contact: <sip:1000@127.0.0.1:33667>
+Content-Type: application/sdp
+
+v=0
+x=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+=== +00021 ms (unix 1795606730528) RECV udp 127.0.0.1:6060 -> 127.0.0.1:33667 len=359 redacted=no endpoint=uac
+SIP/2.0 513 Message Too Large
+Via: SIP/2.0/UDP 127.0.0.1:33667;branch=z9hG4bK2ad3f907da63;rport=33667;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=823a6639657d
+To: <sip:447700900999@127.0.0.1>;tag=65df06a3e5179bc63e06e260bb8902e5.51555464
+Call-ID: b5ba91974a52@127.0.0.1
+CSeq: 1 INVITE
+Server: kamailio (6.1.5 (x86_64/Linux))
+Content-Length: 0
+=== +00021 ms (unix 1795606730528) SEND udp 127.0.0.1:33667 -> 127.0.0.1:6060 len=303 redacted=no endpoint=uac
+ACK sip:447700900999@127.0.0.1:6060 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:33667;branch=z9hG4bK2ad3f907da63;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1>;tag=823a6639657d
+To: <sip:447700900999@127.0.0.1>;tag=65df06a3e5179bc63e06e260bb8902e5.51555464
+Call-ID: b5ba91974a52@127.0.0.1
+CSeq: 1 ACK

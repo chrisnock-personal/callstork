@@ -1,0 +1,51 @@
+{
+  "scenario": "late_2xx_abandoned_branch",
+  "description": "A late 2xx after CANCEL on an abandoned branch must not reach the UAC.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 487,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 487,
+    "final_at": 0.314,
+    "final_count": 1,
+    "responses": [
+      100,
+      180,
+      200,
+      487,
+      200
+    ],
+    "cancelled": true,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "late_2xx_abandoned_branch.sip.txt",
+  "notes": []
+}

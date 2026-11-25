@@ -1,0 +1,46 @@
+{
+  "name": "long_ringing_then_200",
+  "description": "PBX A rings for 12 s, past the 8 s setup deadline, then answers. The deadline ends at the first 18x, so the call must not be cut off.",
+  "duration": 15,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "ring_long_then_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 13,
+      "action": "bye"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": true,
+    "final_after": [
+      11.9,
+      12.6
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  }
+}

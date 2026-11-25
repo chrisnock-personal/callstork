@@ -1,0 +1,39 @@
+=== +00000 ms (unix 1795606774685) SEND udp 127.0.0.1:46914 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
+INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:46914;branch=z9hG4bK7d39377c30c2;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1>;tag=e414f076fc91
+To: <sip:447700900999@127.0.0.1>
+Call-ID: dd9fa3afdb70@127.0.0.1
+CSeq: 1 INVITE
+Contact: <sip:1000@127.0.0.1:46914>
+Content-Type: application/sdp
+
+v=0
+o=- 1 1 IN IP4 127.0.0.1
+=== +00001 ms (unix 1795606774685) RECV udp 127.0.0.1:6060 -> 127.0.0.1:46914 len=334 redacted=no endpoint=uac
+SIP/2.0 100 trying -- your call is important to us
+Via: SIP/2.0/UDP 127.0.0.1:46914;branch=z9hG4bK7d39377c30c2;rport=46914;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=e414f076fc91
+To: <sip:447700900999@127.0.0.1>
+Call-ID: dd9fa3afdb70@127.0.0.1
+CSeq: 1 INVITE
+Server: kamailio (6.1.5 (x86_64/Linux))
+Content-Length: 0
+=== +03980 ms (unix 1795606778665) RECV udp 127.0.0.1:6060 -> 127.0.0.1:46914 len=361 redacted=no endpoint=uac
+SIP/2.0 503 Service Unavailable
+Via: SIP/2.0/UDP 127.0.0.1:46914;branch=z9hG4bK7d39377c30c2;rport=46914;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=e414f076fc91
+To: <sip:447700900999@127.0.0.1>;tag=d7837ce6bbd631122d10546eb75bb4cf-a4e00032
+Call-ID: dd9fa3afdb70@127.0.0.1
+CSeq: 1 INVITE
+Server: kamailio (6.1.5 (x86_64/Linux))
+Content-Length: 0
+=== +03980 ms (unix 1795606778665) SEND udp 127.0.0.1:46914 -> 127.0.0.1:6060 len=303 redacted=no endpoint=uac
+ACK sip:447700900999@127.0.0.1:6060 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:46914;branch=z9hG4bK7d39377c30c2;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1>;tag=e414f076fc91
+To: <sip:447700900999@127.0.0.1>;tag=d7837ce6bbd631122d10546eb75bb4cf-a4e00032
+Call-ID: dd9fa3afdb70@127.0.0.1
+CSeq: 1 ACK

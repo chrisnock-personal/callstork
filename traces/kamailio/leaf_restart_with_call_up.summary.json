@@ -1,0 +1,71 @@
+{
+  "scenario": "leaf_restart_with_call_up",
+  "description": "Restart the leaf while a call is up; the BYE must still loose-route to the PBX.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.089,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 1,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ],
+      "b": []
+    },
+    "hooks": [
+      {
+        "action": "restart_leaf",
+        "command": "podman restart -t 0 sip-leaf-ref-single >/dev/null && sh -c 'for i in $(seq 50); do podman exec sip-leaf-ref-single kamcmd -s unix:/tmp/kamailio_sleaf_ctl core.version >/dev/null 2>&1 && exit 0; sleep 0.1; done; exit 1'",
+        "at": 0.586,
+        "seconds": 0.467,
+        "returncode": 0,
+        "stderr": ""
+      }
+    ]
+  },
+  "trace": "leaf_restart_with_call_up.sip.txt",
+  "notes": [
+    "Needs --restart-cmd. The leaf keeps no dialog state, so a restarted leaf must route the BYE from its Route header alone."
+  ]
+}

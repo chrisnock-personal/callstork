@@ -1,0 +1,42 @@
+{
+  "name": "test_line_fixed_target",
+  "description": "The test-line rule sends 447700900123 to its fixed target (PBX B), ahead of the broad DID rule.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900123"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 1,
+      "action": "bye"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "pbx_used": [
+      "b"
+    ],
+    "dialog": true,
+    "record_routes": 1,
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "b": [
+        "BYE"
+      ]
+    }
+  }
+}

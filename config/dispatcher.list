@@ -1,0 +1,17 @@
+# Pool members (Kamailio dispatcher module format).
+# format: setid destination flags priority attrs
+# flags 8 = probing destination (OPTIONS keepalive)
+#
+# set 1 -> pool "dids" (least-calls: algorithm 10, needs duid)
+1 sip:127.0.0.1:5071 8 10 duid=pbx-a
+1 sip:127.0.0.1:5072 8 10 duid=pbx-b
+
+# set 2 -> pool "lab-failover" (deterministic serial order: algorithm 8).
+# This pool exists only to make the wire-test traces reproducible; priority
+# higher priority first makes pbx-a the first attempt and pbx-b the failover.
+2 sip:127.0.0.1:5071 8 10 duid=pbx-a
+2 sip:127.0.0.1:5072 8 5 duid=pbx-b
+
+# Real members are added per deployment, e.g. (RFC 5737 documentation addresses):
+# 1 sip:192.0.2.10:5060 8 10 duid=pbx-1
+# 1 sip:192.0.2.11:5060 8 10 duid=pbx-2

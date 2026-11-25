@@ -1,0 +1,47 @@
+{
+  "scenario": "cancel_after_200",
+  "description": "CANCEL after the call was answered has no effect on the dialog.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "ruri_user": "07700900999"
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.013,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": true,
+    "dialog": true,
+    "record_routes": 1,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "cancel_after_200.sip.txt",
+  "notes": [
+    "The UAC must not treat a late 487 as replacing the established 200 dialog."
+  ]
+}

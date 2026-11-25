@@ -1,0 +1,71 @@
+{
+  "scenario": "config_reload_with_call",
+  "description": "Reload the leaf's config while a call is up; the BYE must still loose-route to the PBX.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.022,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 1,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ],
+      "b": []
+    },
+    "hooks": [
+      {
+        "action": "reload_config",
+        "command": "podman exec sip-leaf-ref-single kamcmd -s unix:/tmp/kamailio_sleaf_ctl dispatcher.reload >/dev/null && podman exec sip-leaf-ref-single kamcmd -s unix:/tmp/kamailio_sleaf_ctl permissions.addressReload >/dev/null",
+        "at": 0.521,
+        "seconds": 0.471,
+        "returncode": 0,
+        "stderr": ""
+      }
+    ]
+  },
+  "trace": "config_reload_with_call.sip.txt",
+  "notes": [
+    "Needs --reload-cmd (for Kamailio: dispatcher and address-list reload over kamcmd)."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "in_dialog_options",
+  "description": "In-dialog OPTIONS inside an established dialog is loose-routed.",
+  "duration": 4,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.5,
+      "action": "in_dialog_options"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "OPTIONS": 200
+    },
+    "pbx_received": {
+      "a": [
+        "OPTIONS"
+      ]
+    }
+  }
+}

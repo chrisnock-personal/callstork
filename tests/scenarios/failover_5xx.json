@@ -1,0 +1,31 @@
+{
+  "name": "failover_5xx",
+  "description": "Immediate 5xx from the first PBX advances to the second.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_500"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": true,
+    "ruri_user": "07700900999"
+  }
+}

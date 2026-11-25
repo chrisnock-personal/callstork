@@ -1,0 +1,31 @@
+{
+  "name": "ring_then_5xx_no_failover",
+  "description": "5xx after 180 is relayed, because the caller has seen progress.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "ring_then_500"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 500,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "twoxx_retransmission",
+  "description": "A retransmitted 2xx from the PBX is relayed to the UAC.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200",
+      "retransmit_200_after": 0.5
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": true,
+    "ruri_user": "07700900999"
+  }
+}

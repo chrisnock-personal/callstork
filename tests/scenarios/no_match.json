@@ -1,0 +1,28 @@
+{
+  "name": "no_match",
+  "description": "Unmatched number gets a local 404 and is not sent to a PBX.",
+  "duration": 2,
+  "uac": {
+    "number": "1234"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 404,
+    "pbx_used": [],
+    "dialog": false,
+    "final_count": 1
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "scenario": "ring_then_5xx_no_failover",
+  "description": "5xx after 180 is relayed, because the caller has seen progress.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 500,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 500,
+    "final_at": 0.814,
+    "final_count": 1,
+    "responses": [
+      100,
+      180,
+      500
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "ring_then_5xx_no_failover.sip.txt",
+  "notes": []
+}

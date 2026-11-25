@@ -1,0 +1,7 @@
+# Peer allowlist (Kamailio permissions module format).
+# group 1 -> match_field: request_uri_user (IP-authenticated / direct peers)
+# group 2 -> match_field: to_user (registration-style peers)
+# format: group address [netmask] [port] [tag]
+1 127.0.0.1 32 0 lab-uac
+# 1 192.0.2.0 24 0 lan-pbx
+# 2 198.51.100.0 24 0 itsp

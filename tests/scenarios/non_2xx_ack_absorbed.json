@@ -1,0 +1,28 @@
+{
+  "name": "non_2xx_ack_absorbed",
+  "description": "UAC ACKs a local 404; the leaf absorbs it instead of forwarding a new INVITE.",
+  "duration": 2,
+  "uac": {
+    "number": "1234"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 404,
+    "pbx_used": [],
+    "dialog": false,
+    "final_count": 1
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "scenario": "test_line_fixed_target",
+  "description": "The test-line rule sends 447700900123 to its fixed target (PBX B), ahead of the broad DID rule.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "pbx_used": [
+      "b"
+    ],
+    "dialog": true,
+    "record_routes": 2,
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "b": [
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.013,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 0,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [],
+      "b": [
+        "sip:127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [],
+      "b": [
+        "BYE"
+      ]
+    },
+    "hooks": []
+  },
+  "trace": "test_line_fixed_target.sip.txt",
+  "notes": []
+}

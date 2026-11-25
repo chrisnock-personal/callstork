@@ -1,0 +1,46 @@
+{
+  "scenario": "all_down_503",
+  "description": "No healthy pool member: local 503 from the leaf.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 503,
+    "pbx_used": [],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 503,
+    "final_at": 3.96,
+    "final_count": 1,
+    "responses": [
+      100,
+      503
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 0,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "all_down_503.sip.txt",
+  "notes": [
+    "Kamailio OPTIONS probing needs a few seconds to mark both destinations down before the INVITE."
+  ]
+}

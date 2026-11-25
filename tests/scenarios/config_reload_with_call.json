@@ -1,0 +1,49 @@
+{
+  "name": "config_reload_with_call",
+  "description": "Reload the leaf's config while a call is up; the BYE must still loose-route to the PBX.",
+  "duration": 6,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.5,
+      "action": "reload_config"
+    },
+    {
+      "at": 1,
+      "action": "bye"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "notes": [
+    "Needs --reload-cmd (for Kamailio: dispatcher and address-list reload over kamcmd)."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "all_down_503",
+  "description": "No healthy pool member: local 503 from the leaf.",
+  "duration": 6,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "enabled": false
+    },
+    "b": {
+      "enabled": false
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 503,
+    "pbx_used": [],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "notes": [
+    "Kamailio OPTIONS probing needs a few seconds to mark both destinations down before the INVITE."
+  ]
+}

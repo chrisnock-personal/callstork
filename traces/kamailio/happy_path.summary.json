@@ -1,0 +1,48 @@
+{
+  "scenario": "happy_path",
+  "description": "Matching DID is dispatched to a pool member and answered.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": true,
+    "record_routes": 1,
+    "ruri_user": "07700900999"
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.013,
+    "final_count": 1,
+    "responses": [
+      100,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 1,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "happy_path.sip.txt",
+  "notes": []
+}

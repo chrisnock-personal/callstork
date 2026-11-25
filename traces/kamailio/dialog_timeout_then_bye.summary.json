@@ -1,0 +1,62 @@
+{
+  "scenario": "dialog_timeout_then_bye",
+  "description": "Keep a call up for 9 s, then BYE; it must still route to the PBX.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.023,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 1,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "dialog_timeout_then_bye.sip.txt",
+  "notes": [
+    "Run the future leaf with any dialog/idle timeout below 9 s so this crosses it. The Kamailio reference keeps no dialog state, so for it this checks that loose routing still works after 9 s."
+  ]
+}

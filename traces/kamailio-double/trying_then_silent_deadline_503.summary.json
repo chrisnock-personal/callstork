@@ -1,0 +1,52 @@
+{
+  "scenario": "trying_then_silent_deadline_503",
+  "description": "PBX A sends 100 Trying and then nothing. 100 stops the 2 s attempt timer, so no failover; the 8 s setup deadline (no 18x) ends the call with a local 503.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 503,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "final_after": [
+      7.5,
+      8.7
+    ],
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 503,
+    "final_at": 8.01,
+    "final_count": 1,
+    "responses": [
+      100,
+      503
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "trying_then_silent_deadline_503.sip.txt",
+  "notes": []
+}

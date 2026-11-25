@@ -1,0 +1,45 @@
+{
+  "name": "dialog_timeout_then_bye",
+  "description": "Keep a call up for 9 s, then BYE; it must still route to the PBX.",
+  "duration": 12,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 9,
+      "action": "bye"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "notes": [
+    "Run the future leaf with any dialog/idle timeout below 9 s so this crosses it. The Kamailio reference keeps no dialog state, so for it this checks that loose routing still works after 9 s."
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "invite_retransmission_failover",
+  "description": "A retransmitted INVITE during failover does not create a second call.",
+  "duration": 5,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "silent"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.5,
+      "action": "retransmit_invite"
+    },
+    {
+      "at": 1.0,
+      "action": "retransmit_invite"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "dialog": true,
+    "ruri_user": "07700900999"
+  }
+}

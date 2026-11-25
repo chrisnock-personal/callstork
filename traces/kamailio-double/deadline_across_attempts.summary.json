@@ -1,0 +1,55 @@
+{
+  "scenario": "deadline_across_attempts",
+  "description": "PBX A is silent (2 s attempt timeout), PBX B sends 100 then nothing. The 8 s deadline counts from the caller's INVITE, not from B's attempt: 503 at about 8 s.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 503,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": false,
+    "final_after": [
+      7.5,
+      8.7
+    ],
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 503,
+    "final_at": 8.044,
+    "final_count": 1,
+    "responses": [
+      100,
+      503
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": [
+        "sip:07700900999@127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "deadline_across_attempts.sip.txt",
+  "notes": []
+}

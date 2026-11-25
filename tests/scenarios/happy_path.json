@@ -1,0 +1,31 @@
+{
+  "name": "happy_path",
+  "description": "Matching DID is dispatched to a pool member and answered.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": true,
+    "record_routes": 1,
+    "ruri_user": "07700900999"
+  }
+}

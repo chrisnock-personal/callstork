@@ -1,0 +1,43 @@
+{
+  "name": "reinvite",
+  "description": "re-INVITE inside an established dialog is loose-routed.",
+  "duration": 4,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.5,
+      "action": "reinvite"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "record_routes": 1,
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "re-INVITE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "re-INVITE"
+      ]
+    }
+  }
+}

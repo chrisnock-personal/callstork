@@ -1,0 +1,61 @@
+{
+  "scenario": "in_dialog_bye_from_uac",
+  "description": "Established call, then BYE from the UAC through the leaf's Record-Route.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "record_routes": 2,
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.013,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "in_dialog_bye_from_uac.sip.txt",
+  "notes": []
+}

@@ -1,0 +1,49 @@
+{
+  "name": "leaf_restart_with_call_up",
+  "description": "Restart the leaf while a call is up; the BYE must still loose-route to the PBX.",
+  "duration": 8,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.5,
+      "action": "restart_leaf"
+    },
+    {
+      "at": 1.5,
+      "action": "bye"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "notes": [
+    "Needs --restart-cmd. The leaf keeps no dialog state, so a restarted leaf must route the BYE from its Route header alone."
+  ]
+}

@@ -1,0 +1,140 @@
+=== +00011 ms (unix 1795606855900) SEND udp 127.0.0.1:48877 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
+INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;branch=z9hG4bK18506c5af457;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 INVITE
+Contact: <sip:1000@127.0.0.1:48877>
+Content-Type: application/sdp
+
+v=0
+o=- 1 1 IN IP4 127.0.0.1
+=== +00012 ms (unix 1795606855901) RECV udp 127.0.0.1:6060 -> 127.0.0.1:48877 len=334 redacted=no endpoint=uac
+SIP/2.0 100 trying -- your call is important to us
+Via: SIP/2.0/UDP 127.0.0.1:48877;branch=z9hG4bK18506c5af457;rport=48877;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 INVITE
+Server: kamailio (6.1.5 (x86_64/Linux))
+Content-Length: 0
+=== +00012 ms (unix 1795606855901) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
+INVITE sip:07700900999@127.0.0.1:5071 SIP/2.0
+Record-Route: <sip:127.0.0.1:6061;lr=on>
+Record-Route: <sip:127.0.0.1:6060;lr=on>
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd868.b34a599f68b4067197706813b651664d.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bK18506c5af457;rport=48877
+Max-Forwards: 69
+From: <sip:1000@127.0.0.1>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 INVITE
+Contact: <sip:1000@127.0.0.1:48877>
+Content-Type: application/sdp
+X-Inbound-Rule: lab-failover
+
+v=0
+o=- 1 1 IN IP4 127.0.0.1
+=== +00012 ms (unix 1795606855901) SEND udp 127.0.0.1:5071 -> 127.0.0.1:6060 len=625 redacted=no endpoint=pbx_a
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd868.b34a599f68b4067197706813b651664d.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bK18506c5af457;rport=48877
+From: <sip:1000@127.0.0.1>;tag=934d7b76bc31
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 INVITE
+Record-Route: <sip:127.0.0.1:6061;lr=on>
+Record-Route: <sip:127.0.0.1:6060;lr=on>
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Contact: <sip:pbx_a@127.0.0.1:5071>
+Content-Type: application/sdp
+Content-Length: 110
+
+v=0
+o=- 1 1 IN IP4 127.0.0.1
+s=-
+c=IN IP4 127.0.0.1
+t=0 0
+m=audio 40000 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+=== +00013 ms (unix 1795606855901) RECV udp 127.0.0.1:6060 -> 127.0.0.1:48877 len=538 redacted=no endpoint=uac
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bK18506c5af457;rport=48877
+From: <sip:1000@127.0.0.1>;tag=934d7b76bc31
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 INVITE
+Record-Route: <sip:127.0.0.1:6061;lr=on>
+Record-Route: <sip:127.0.0.1:6060;lr=on>
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Contact: <sip:pbx_a@127.0.0.1:5071>
+Content-Type: application/sdp
+Content-Length: 110
+
+v=0
+o=- 1 1 IN IP4 127.0.0.1
+s=-
+c=IN IP4 127.0.0.1
+t=0 0
+m=audio 40000 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+=== +00013 ms (unix 1795606855901) SEND udp 127.0.0.1:48877 -> 127.0.0.1:6060 len=343 redacted=no endpoint=uac
+ACK sip:pbx_a@127.0.0.1:5071 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;branch=z9hG4bK59b7eb4632af;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1:48877>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 ACK
+Route: <sip:127.0.0.1:6060;lr=on>
+Route: <sip:127.0.0.1:6061;lr=on>
+=== +00013 ms (unix 1795606855902) RECV udp 127.0.0.1:6061 -> 127.0.0.1:5071 len=483 redacted=no endpoint=pbx_a
+ACK sip:pbx_a@127.0.0.1:5071 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:6061;branch=z9hG4bKd868.846e4fb7777bbb018817441b240c282f.0
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport=6060;branch=z9hG4bKd868.f15518203c7e14927d3c511ba699794c.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bK59b7eb4632af;rport=48877
+Max-Forwards: 68
+From: <sip:1000@127.0.0.1:48877>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 1 ACK
+=== +00512 ms (unix 1795606856400) SEND udp 127.0.0.1:48877 -> 127.0.0.1:6060 len=380 redacted=no endpoint=uac
+BYE sip:pbx_a@127.0.0.1:5071 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;branch=z9hG4bKec631fff9e56;rport
+Max-Forwards: 70
+From: <sip:1000@127.0.0.1:48877>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 2 BYE
+Route: <sip:127.0.0.1:6060;lr=on>
+Route: <sip:127.0.0.1:6061;lr=on>
+Contact: <sip:1000@127.0.0.1:48877>
+=== +00513 ms (unix 1795606856402) RECV udp 127.0.0.1:6061 -> 127.0.0.1:5071 len=520 redacted=no endpoint=pbx_a
+BYE sip:pbx_a@127.0.0.1:5071 SIP/2.0
+Via: SIP/2.0/UDP 127.0.0.1:6061;branch=z9hG4bKa868.b9b0e6bfdf778939439d54b2ba4bee79.0
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport=6060;branch=z9hG4bKa868.6bb353903848f9ea16a6b9c2e223b1d8.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bKec631fff9e56;rport=48877
+Max-Forwards: 68
+From: <sip:1000@127.0.0.1:48877>;tag=934d7b76bc31
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 2 BYE
+Contact: <sip:1000@127.0.0.1:48877>
+=== +00513 ms (unix 1795606856402) SEND udp 127.0.0.1:5071 -> 127.0.0.1:6061 len=462 redacted=no endpoint=pbx_a
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 127.0.0.1:6061;branch=z9hG4bKa868.b9b0e6bfdf778939439d54b2ba4bee79.0
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport=6060;branch=z9hG4bKa868.6bb353903848f9ea16a6b9c2e223b1d8.0
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bKec631fff9e56;rport=48877
+From: <sip:1000@127.0.0.1:48877>;tag=934d7b76bc31
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 2 BYE
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Content-Length: 0
+=== +00514 ms (unix 1795606856403) RECV udp 127.0.0.1:6060 -> 127.0.0.1:48877 len=277 redacted=no endpoint=uac
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 127.0.0.1:48877;received=127.0.0.1;branch=z9hG4bKec631fff9e56;rport=48877
+From: <sip:1000@127.0.0.1:48877>;tag=934d7b76bc31
+Call-ID: a86790cf1db4@127.0.0.1
+CSeq: 2 BYE
+To: <sip:447700900999@127.0.0.1>;tag=e3393c0c15d7
+Content-Length: 0

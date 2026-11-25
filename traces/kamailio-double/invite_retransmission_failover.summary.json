@@ -1,0 +1,52 @@
+{
+  "scenario": "invite_retransmission_failover",
+  "description": "A retransmitted INVITE during failover does not create a second call.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "dialog": true,
+    "ruri_user": "07700900999"
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 2.012,
+    "final_count": 1,
+    "responses": [
+      100,
+      100,
+      100,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": [
+        "sip:07700900999@127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "invite_retransmission_failover.sip.txt",
+  "notes": []
+}

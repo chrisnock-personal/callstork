@@ -1,0 +1,30 @@
+{
+  "name": "oversized_invite",
+  "description": "UDP INVITE larger than the conservative 1300-byte MTU gets 513.",
+  "duration": 2,
+  "uac": {
+    "number": "447700900999",
+    "body": "oversized"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 513,
+    "pbx_used": [],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

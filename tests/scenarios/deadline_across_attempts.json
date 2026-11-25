@@ -1,0 +1,36 @@
+{
+  "name": "deadline_across_attempts",
+  "description": "PBX A is silent (2 s attempt timeout), PBX B sends 100 then nothing. The 8 s deadline counts from the caller's INVITE, not from B's attempt: 503 at about 8 s.",
+  "duration": 12,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "silent"
+    },
+    "b": {
+      "behavior": "trying_then_silent"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 503,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": false,
+    "final_after": [
+      7.5,
+      8.7
+    ],
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

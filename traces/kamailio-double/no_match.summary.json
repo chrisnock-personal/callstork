@@ -1,0 +1,42 @@
+{
+  "scenario": "no_match",
+  "description": "Unmatched number gets a local 404 and is not sent to a PBX.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 404,
+    "pbx_used": [],
+    "dialog": false,
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 404,
+    "final_at": 0.013,
+    "final_count": 1,
+    "responses": [
+      404
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 0,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "no_match.sip.txt",
+  "notes": []
+}

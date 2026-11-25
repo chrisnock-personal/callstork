@@ -1,0 +1,48 @@
+{
+  "scenario": "twoxx_retransmission",
+  "description": "A retransmitted 2xx from the PBX is relayed to the UAC.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": true,
+    "ruri_user": "07700900999"
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.022,
+    "final_count": 2,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 1,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "twoxx_retransmission.sip.txt",
+  "notes": []
+}

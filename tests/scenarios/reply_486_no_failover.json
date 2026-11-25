@@ -1,0 +1,31 @@
+{
+  "name": "reply_486_no_failover",
+  "description": "486 Busy Here is relayed; the second PBX is never tried.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "reply_486"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 486,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

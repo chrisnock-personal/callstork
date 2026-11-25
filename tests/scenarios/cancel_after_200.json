@@ -1,0 +1,34 @@
+{
+  "name": "cancel_after_200",
+  "description": "CANCEL after the call was answered has no effect on the dialog.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.4,
+      "action": "cancel"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "ruri_user": "07700900999"
+  },
+  "notes": [
+    "The UAC must not treat a late 487 as replacing the established 200 dialog."
+  ]
+}

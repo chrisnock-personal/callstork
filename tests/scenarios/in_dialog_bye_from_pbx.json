@@ -1,0 +1,39 @@
+{
+  "name": "in_dialog_bye_from_pbx",
+  "description": "Established call, then BYE from the PBX through the leaf's Record-Route.",
+  "duration": 4,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.5,
+      "action": "pbx_bye",
+      "pbx": "a"
+    }
+  ],
+  "expect": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "received_requests": [
+      "BYE"
+    ],
+    "record_routes": 1,
+    "ruri_user": "07700900999"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "max_forwards_loop",
+  "description": "INVITE arriving with Max-Forwards: 0 is rejected with 483.",
+  "duration": 2,
+  "uac": {
+    "number": "447700900999",
+    "max_forwards": 0
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "answer_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 483,
+    "pbx_used": [],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

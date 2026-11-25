@@ -1,0 +1,60 @@
+{
+  "scenario": "in_dialog_options",
+  "description": "In-dialog OPTIONS inside an established dialog is loose-routed.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "OPTIONS": 200
+    },
+    "pbx_received": {
+      "a": [
+        "OPTIONS"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.024,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "OPTIONS": 200
+    },
+    "pbx_received": {
+      "a": [
+        "OPTIONS"
+      ],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "in_dialog_options.sip.txt",
+  "notes": []
+}

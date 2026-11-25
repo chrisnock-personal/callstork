@@ -1,0 +1,43 @@
+{
+  "scenario": "max_forwards_loop",
+  "description": "INVITE arriving with Max-Forwards: 0 is rejected with 483.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 483,
+    "pbx_used": [],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 483,
+    "final_at": 0.022,
+    "final_count": 1,
+    "responses": [
+      483
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 0,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "max_forwards_loop.sip.txt",
+  "notes": []
+}

@@ -1,0 +1,33 @@
+{
+  "name": "cancel_during_ringing",
+  "description": "CANCEL while the UAC has seen 180 Ringing.",
+  "duration": 3,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "ring_then_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 0.4,
+      "action": "cancel"
+    }
+  ],
+  "expect": {
+    "final_status": 487,
+    "cancelled": true,
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  }
+}

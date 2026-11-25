@@ -1,0 +1,63 @@
+{
+  "scenario": "reinvite",
+  "description": "re-INVITE inside an established dialog is loose-routed.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "dialog": true,
+    "pbx_used": [
+      "a"
+    ],
+    "record_routes": 2,
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "re-INVITE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "re-INVITE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 0.02,
+    "final_count": 1,
+    "responses": [
+      100,
+      200,
+      100,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 2,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071",
+        "sip:pbx_a@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "re-INVITE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "re-INVITE"
+      ],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "reinvite.sip.txt",
+  "notes": []
+}

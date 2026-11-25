@@ -1,0 +1,105 @@
+# Intended YAML contract for the future `sip-leaf` binary.
+# This is the source of truth for the CLI checker/tester; the Kamailio reference
+# in ../reference/kamailio implements the same behaviour in its own format.
+version: 1
+
+defaults:
+  strip_plus: true
+  strip_leading_zero: false
+  max_forwards: 70
+  attempt_timeout: 2s
+  setup_deadline: 8s
+
+listen:
+  # The peer-facing and PBX-facing sockets. If both addresses are equal, one
+  # Record-Route is inserted; if different, two (RFC 5658: LAN/outgoing on top,
+  # peer-facing below).
+  peer: { address: 0.0.0.0, port: 5060 }
+  lan:  { address: 0.0.0.0, port: 5060 }
+
+# Any inbound SIP source: ITSP, PBX or endpoint. Group id selects match_field
+# in the Kamailio reference (1 = request_uri_user, 2 = to_user).
+peers:
+  - name: lab-uac
+    allow: [127.0.0.0/8]
+    match_field: request_uri_user
+
+  - name: itsp
+    allow: [198.51.100.0/24]
+    match_field: to_user
+    # Optional, not implemented in v1. Enable only for a real registration trunk.
+    # register:
+    #   registrar: sip:sip.itsp.example
+    #   username: '1234567'
+    #   password_env: ITSP_PASSWORD
+    #   expires: 600
+
+# Evaluated in file order; first match wins. Captures and match.number always
+# operate on the normalised number (no leading '+').
+rules:
+  # Reference-test pool: deterministic priority order so wire traces are
+  # reproducible. This is not a production DID rule.
+  - name: lab-failover
+    match:
+      methods: [INVITE]
+      number: '^44(7700900999)$'
+    action:
+      pool: lab-failover
+      rewrite:
+        request_uri: 'sip:0${1}@${selected_host}:${selected_port}'
+
+  # Exact-number rules go before the broad DID rule, which would match them too.
+  - name: test-line
+    match: { number: '^447700900123$' }
+    action: { target: 'sip:127.0.0.1:5072' }
+
+  - name: inbound-dids
+    match:
+      methods: [INVITE]
+      number: '^44(\d{10})$'
+      # optional extra terms:
+      # to_host: 'leaf.example'
+      # from_user: '^.*$'
+    action:
+      pool: dids
+      rewrite:
+        request_uri: 'sip:0${1}@${selected_host}:${selected_port}'
+        add_headers:
+          X-Inbound-Rule: inbound-dids
+        # remove_headers: [P-Asserted-Identity]
+
+pools:
+  dids:
+    strategy: least-calls      # round-robin | least-calls | weighted | first-available
+    failover_on: [transport_error, timeout, 5xx]
+    attempt_timeout: 2s
+    setup_deadline: 8s
+    health:
+      passive: true
+      options_interval: 30s
+      options_uri: 'sip:healthcheck@${member_host}'
+      accept: [200]
+      cool_down: 30s
+    members:
+      - uri: 'sip:127.0.0.1:5071'
+        weight: 100
+      - uri: 'sip:127.0.0.1:5072'
+        weight: 100
+
+  # Reference-test pool only: first-available, ordered by list position.
+  lab-failover:
+    strategy: first-available
+    failover_on: [transport_error, timeout, 5xx]
+    attempt_timeout: 2s
+    setup_deadline: 8s
+    health:
+      passive: true
+      options_interval: 30s
+      options_uri: 'sip:healthcheck@${member_host}'
+      accept: [200]
+      cool_down: 30s
+    members:
+      - uri: 'sip:127.0.0.1:5071'
+        priority: 10
+      - uri: 'sip:127.0.0.1:5072'
+        priority: 5

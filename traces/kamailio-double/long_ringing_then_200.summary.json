@@ -1,0 +1,65 @@
+{
+  "scenario": "long_ringing_then_200",
+  "description": "PBX A rings for 12 s, past the 8 s setup deadline, then answers. The deadline ends at the first 18x, so the call must not be cut off.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": true,
+    "final_after": [
+      11.9,
+      12.6
+    ],
+    "ruri_user": "07700900999",
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 12.013,
+    "final_count": 1,
+    "responses": [
+      100,
+      180,
+      200,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {
+      "BYE": 200
+    },
+    "pbx_received": {
+      "a": [
+        "BYE"
+      ],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "long_ringing_then_200.sip.txt",
+  "notes": []
+}

@@ -1,0 +1,48 @@
+{
+  "scenario": "reply_486_no_failover",
+  "description": "486 Busy Here is relayed; the second PBX is never tried.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 486,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 486,
+    "final_at": 0.022,
+    "final_count": 1,
+    "responses": [
+      100,
+      486
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "reply_486_no_failover.sip.txt",
+  "notes": []
+}

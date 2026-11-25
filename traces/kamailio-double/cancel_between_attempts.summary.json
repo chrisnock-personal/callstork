@@ -1,0 +1,50 @@
+{
+  "scenario": "cancel_between_attempts",
+  "description": "CANCEL arrives between the silent first attempt and the second attempt.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 487,
+    "cancelled": true,
+    "dialog": false,
+    "ruri_user": "07700900999",
+    "final_count": 1
+  },
+  "observed": {
+    "final_status": 487,
+    "final_at": 2.324,
+    "final_count": 1,
+    "responses": [
+      100,
+      180,
+      200,
+      487
+    ],
+    "cancelled": true,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": [
+        "sip:07700900999@127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "cancel_between_attempts.sip.txt",
+  "notes": []
+}
