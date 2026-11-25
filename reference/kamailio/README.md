@@ -50,9 +50,10 @@ The config reads data files relative to its own directory:
   using algorithm 8 (priority order) so traces always try PBX A before PBX B.
   Both sets use OPTIONS probing.
 
-Change `PEER_ADDR`/`PEER_PORT` and `LAN_ADDR`/`LAN_PORT` together if you move the
-reference to another host; the double `Record-Route` addresses are built from
-those port values at runtime. `force_rport=yes` answers from the source
+All four are overridable with `-A`, e.g. `-A PEER_ADDR=192.0.2.5`. For
+`DOUBLE_RR`, also set `LAN_ADDR_STR` to the quoted LAN address
+(`-A 'LAN_ADDR_STR="192.0.2.5"'`); the peer-side header uses the address and
+port the INVITE arrived on. `force_rport=yes` answers from the source
 address/port, which keeps the fake UAC behind NAT-style source ports happy.
 
 ## Behaviour
@@ -124,6 +125,38 @@ this trace with a `tcpdump` capture if wire fidelity matters:
 ```sh
 sudo tcpdump -ni lo 'udp port 6060 or udp port 6061 or udp port 5071 or udp port 5072' -w out/kamailio/capture.pcap
 ```
+
+## Checked against a real PBX (2026-11-25)
+
+The reference was run on a LAN address (`-A PEER_ADDR=… -A LAN_ADDR=…`) with a
+FreePBX 17 / Asterisk 22 box as the pool member, a test caller sending a real
+SDP offer, and a dialplan context with one number per behaviour. All of these
+passed, twice:
+
+| Case | Result |
+|---|---|
+| ring 2 s, answer, PBX hangs up | 180 relayed, 200, PBX's BYE reached the caller via `Record-Route` |
+| answer, caller hangs up | BYE loose-routed to the PBX, 200 back |
+| busy / unknown number | 486 / 404 relayed, no failover, ACK absorbed |
+| dead first member (unroutable address), then the PBX | failover after the 2 s attempt timeout, call answered |
+| CANCEL while ringing | 487, PBX channel gone |
+| PBX sends only 100 Trying | 503 at 8 s, PBX attempt CANCELled |
+
+RTP flowed directly between the PBX and the caller in every answered case; the
+leaf only carried signalling.
+
+Two things to know when pointing it at FreePBX:
+
+- FreePBX's PJSIP `endpoint_identifier_order` is `ip,username,anonymous,header`,
+  and with anonymous inbound SIP allowed the `anonymous` endpoint claims the
+  call before a `match_header` identify is consulted (the call lands in
+  `from-trunk` as `s`). Identify the leaf by IP, or by IP and port
+  (`match=<leaf-ip>:<port>`) if other SIP traffic comes from the same host.
+- If the leaf runs in WSL2 with mirrored networking and the PBX is a VMware
+  bridged VM on the same Windows host, every packet from WSL to the VM can
+  arrive twice. SIP treats the copies as retransmissions (the PBX answers twice
+  and the leaf may relay a duplicate final at once), so calls still work, but
+  duplicate counts in traces come from the network, not the leaf.
 
 ## Known deviations to reconcile in Phase 1
 
