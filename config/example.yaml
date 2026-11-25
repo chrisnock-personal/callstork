@@ -82,9 +82,7 @@ pools:
       cool_down: 30s
     members:
       - uri: 'sip:127.0.0.1:5071'
-        weight: 100
       - uri: 'sip:127.0.0.1:5072'
-        weight: 100
 
   # Reference-test pool only: first-available, ordered by list position.
   lab-failover:

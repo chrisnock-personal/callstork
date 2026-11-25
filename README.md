@@ -61,6 +61,23 @@ docs/
   (`traces/`), plus a compile-only `sipgo` API probe documenting the stack
   decision (`docs/probes/sipgo-compile/`).
 
+## The `callstork` program (Phase 1, in progress)
+
+`callstork check` validates a config file without sending any SIP: schema and
+types, peers and CIDRs, regexes and their capture groups, rules that an earlier
+rule shadows, actions, pools and timers, header edits and template variables.
+Every problem is reported as `file:line:column: severity: message`.
+
+```sh
+go build -o callstork ./cmd/callstork          # Go 1.26
+./callstork check config/example.yaml          # 0 error(s), 0 warning(s)
+./callstork check --json --strict my.yaml      # JSON; warnings fail too
+```
+
+Exit status: 0 with no errors (warnings allowed), 1 with errors (or warnings
+under `--strict`), 2 when the file can't be read. Without a local Go:
+`podman run --rm -v "$PWD:/src:Z" -w /src golang:1.26-alpine go test ./...`.
+
 ## Quick start
 
 Run the parser/message unit tests:
