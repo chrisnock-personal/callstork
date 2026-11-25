@@ -1,6 +1,6 @@
 {
   "name": "late_2xx_abandoned_branch",
-  "description": "A late 2xx after CANCEL on an abandoned branch must not reach the UAC.",
+  "description": "A late 2xx after CANCEL on an abandoned attempt must not reach the caller; the leaf ACKs it and sends BYE to that PBX.",
   "duration": 4.5,
   "uac": {
     "number": "447700900999"
@@ -30,6 +30,12 @@
     ],
     "dialog": false,
     "ruri_user": "07700900999",
-    "final_count": 1
+    "final_count": 1,
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ]
+    }
   }
 }

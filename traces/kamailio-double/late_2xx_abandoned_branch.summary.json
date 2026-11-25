@@ -1,6 +1,6 @@
 {
   "scenario": "late_2xx_abandoned_branch",
-  "description": "A late 2xx after CANCEL on an abandoned branch must not reach the UAC.",
+  "description": "A late 2xx after CANCEL on an abandoned attempt must not reach the caller; the leaf ACKs it and sends BYE to that PBX.",
   "leaf": "127.0.0.1:6060",
   "result": "pass",
   "ok": true,
@@ -12,18 +12,24 @@
     ],
     "dialog": false,
     "ruri_user": "07700900999",
-    "final_count": 1
+    "final_count": 1,
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ]
+    }
   },
   "observed": {
     "final_status": 487,
     "final_at": 0.314,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       180,
       200,
-      487,
-      200
+      487
     ],
     "cancelled": true,
     "dialog": false,
@@ -41,7 +47,11 @@
     },
     "dialog_responses": {},
     "pbx_received": {
-      "a": [],
+      "a": [
+        "ACK",
+        "ACK-2xx",
+        "BYE"
+      ],
       "b": []
     },
     "hooks": []

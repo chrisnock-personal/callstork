@@ -1,147 +1,147 @@
-=== +00021 ms (unix 1795606866785) SEND udp 127.0.0.1:40553 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
+=== +00021 ms (unix 1795624446368) SEND udp 127.0.0.1:34853 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
 INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bK2652f3197033;rport
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bKe7564473deee;rport
 Max-Forwards: 70
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +00022 ms (unix 1795606866786) RECV udp 127.0.0.1:6060 -> 127.0.0.1:40553 len=334 redacted=no endpoint=uac
+=== +00022 ms (unix 1795624446369) RECV udp 127.0.0.1:6060 -> 127.0.0.1:34853 len=334 redacted=no endpoint=uac
 SIP/2.0 100 trying -- your call is important to us
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bK2652f3197033;rport=40553;received=127.0.0.1
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bKe7564473deee;rport=34853;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
 Server: kamailio (6.1.5 (x86_64/Linux))
 Content-Length: 0
-=== +00022 ms (unix 1795606866786) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
+=== +00022 ms (unix 1795624446369) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
 INVITE sip:07700900999@127.0.0.1:5071 SIP/2.0
 Record-Route: <sip:127.0.0.1:6061;lr=on>
 Record-Route: <sip:127.0.0.1:6060;lr=on>
-Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKdb59.d0dbc133b36b0e7eecd6a3bcb5216c75.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bK2652f3197033;rport=40553
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd005.264be35bdf621b2cc9fe8999a9afa4ce.0
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bKe7564473deee;rport=34853
 Max-Forwards: 69
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 X-Inbound-Rule: lab-failover
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +00510 ms (unix 1795606867274) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
+=== +00466 ms (unix 1795624446813) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
 INVITE sip:07700900999@127.0.0.1:5071 SIP/2.0
 Record-Route: <sip:127.0.0.1:6061;lr=on>
 Record-Route: <sip:127.0.0.1:6060;lr=on>
-Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKdb59.d0dbc133b36b0e7eecd6a3bcb5216c75.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bK2652f3197033;rport=40553
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd005.264be35bdf621b2cc9fe8999a9afa4ce.0
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bKe7564473deee;rport=34853
 Max-Forwards: 69
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 X-Inbound-Rule: lab-failover
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +00521 ms (unix 1795606867285) SEND udp 127.0.0.1:40553 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
+=== +00522 ms (unix 1795624446869) SEND udp 127.0.0.1:34853 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
 INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bK2652f3197033;rport
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bKe7564473deee;rport
 Max-Forwards: 70
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +00522 ms (unix 1795606867286) RECV udp 127.0.0.1:6060 -> 127.0.0.1:40553 len=334 redacted=no endpoint=uac
+=== +00522 ms (unix 1795624446869) RECV udp 127.0.0.1:6060 -> 127.0.0.1:34853 len=334 redacted=no endpoint=uac
 SIP/2.0 100 trying -- your call is important to us
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bK2652f3197033;rport=40553;received=127.0.0.1
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bKe7564473deee;rport=34853;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
 Server: kamailio (6.1.5 (x86_64/Linux))
 Content-Length: 0
-=== +01021 ms (unix 1795606867785) SEND udp 127.0.0.1:40553 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
+=== +01022 ms (unix 1795624447369) SEND udp 127.0.0.1:34853 -> 127.0.0.1:6060 len=362 redacted=no endpoint=uac
 INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bK2652f3197033;rport
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bKe7564473deee;rport
 Max-Forwards: 70
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +01021 ms (unix 1795606867785) RECV udp 127.0.0.1:6060 -> 127.0.0.1:40553 len=334 redacted=no endpoint=uac
+=== +01023 ms (unix 1795624447370) RECV udp 127.0.0.1:6060 -> 127.0.0.1:34853 len=334 redacted=no endpoint=uac
 SIP/2.0 100 trying -- your call is important to us
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bK2652f3197033;rport=40553;received=127.0.0.1
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bKe7564473deee;rport=34853;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
 Server: kamailio (6.1.5 (x86_64/Linux))
 Content-Length: 0
-=== +01510 ms (unix 1795606868274) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
+=== +01466 ms (unix 1795624447813) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5071 len=587 redacted=no endpoint=pbx_a
 INVITE sip:07700900999@127.0.0.1:5071 SIP/2.0
 Record-Route: <sip:127.0.0.1:6061;lr=on>
 Record-Route: <sip:127.0.0.1:6060;lr=on>
-Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKdb59.d0dbc133b36b0e7eecd6a3bcb5216c75.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bK2652f3197033;rport=40553
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd005.264be35bdf621b2cc9fe8999a9afa4ce.0
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bKe7564473deee;rport=34853
 Max-Forwards: 69
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 X-Inbound-Rule: lab-failover
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +02011 ms (unix 1795606868774) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5072 len=587 redacted=no endpoint=pbx_b
+=== +01967 ms (unix 1795624448314) RECV udp 127.0.0.1:6060 -> 127.0.0.1:5072 len=587 redacted=no endpoint=pbx_b
 INVITE sip:07700900999@127.0.0.1:5072 SIP/2.0
 Record-Route: <sip:127.0.0.1:6061;lr=on>
 Record-Route: <sip:127.0.0.1:6060;lr=on>
-Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKdb59.d0dbc133b36b0e7eecd6a3bcb5216c75.1
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bK2652f3197033;rport=40553
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd005.264be35bdf621b2cc9fe8999a9afa4ce.1
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bKe7564473deee;rport=34853
 Max-Forwards: 69
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
 To: <sip:447700900999@127.0.0.1>
-Call-ID: 66ceb895fb81@127.0.0.1
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:40553>
+Contact: <sip:1000@127.0.0.1:34853>
 Content-Type: application/sdp
 X-Inbound-Rule: lab-failover
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +02011 ms (unix 1795606868775) SEND udp 127.0.0.1:5072 -> 127.0.0.1:6060 len=625 redacted=no endpoint=pbx_b
+=== +01968 ms (unix 1795624448315) SEND udp 127.0.0.1:5072 -> 127.0.0.1:6060 len=625 redacted=no endpoint=pbx_b
 SIP/2.0 200 OK
-Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKdb59.d0dbc133b36b0e7eecd6a3bcb5216c75.1
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bK2652f3197033;rport=40553
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
-Call-ID: 66ceb895fb81@127.0.0.1
+Via: SIP/2.0/UDP 127.0.0.1:6060;branch=z9hG4bKd005.264be35bdf621b2cc9fe8999a9afa4ce.1
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bKe7564473deee;rport=34853
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
 Record-Route: <sip:127.0.0.1:6061;lr=on>
 Record-Route: <sip:127.0.0.1:6060;lr=on>
-To: <sip:447700900999@127.0.0.1>;tag=7ac924a43149
+To: <sip:447700900999@127.0.0.1>;tag=e43baad4b42b
 Contact: <sip:pbx_b@127.0.0.1:5072>
 Content-Type: application/sdp
 Content-Length: 110
@@ -153,15 +153,15 @@ c=IN IP4 127.0.0.1
 t=0 0
 m=audio 40000 RTP/AVP 0
 a=rtpmap:0 PCMU/8000
-=== +02012 ms (unix 1795606868776) RECV udp 127.0.0.1:6060 -> 127.0.0.1:40553 len=538 redacted=no endpoint=uac
+=== +01969 ms (unix 1795624448316) RECV udp 127.0.0.1:6060 -> 127.0.0.1:34853 len=538 redacted=no endpoint=uac
 SIP/2.0 200 OK
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bK2652f3197033;rport=40553
-From: <sip:1000@127.0.0.1>;tag=c4be8c22ab66
-Call-ID: 66ceb895fb81@127.0.0.1
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bKe7564473deee;rport=34853
+From: <sip:1000@127.0.0.1>;tag=9dc4416f8d2c
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 INVITE
 Record-Route: <sip:127.0.0.1:6061;lr=on>
 Record-Route: <sip:127.0.0.1:6060;lr=on>
-To: <sip:447700900999@127.0.0.1>;tag=7ac924a43149
+To: <sip:447700900999@127.0.0.1>;tag=e43baad4b42b
 Contact: <sip:pbx_b@127.0.0.1:5072>
 Content-Type: application/sdp
 Content-Length: 110
@@ -173,23 +173,23 @@ c=IN IP4 127.0.0.1
 t=0 0
 m=audio 40000 RTP/AVP 0
 a=rtpmap:0 PCMU/8000
-=== +02012 ms (unix 1795606868776) SEND udp 127.0.0.1:40553 -> 127.0.0.1:6060 len=343 redacted=no endpoint=uac
+=== +01969 ms (unix 1795624448316) SEND udp 127.0.0.1:34853 -> 127.0.0.1:6060 len=343 redacted=no endpoint=uac
 ACK sip:pbx_b@127.0.0.1:5072 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;branch=z9hG4bKff3a4804fc86;rport
+Via: SIP/2.0/UDP 127.0.0.1:34853;branch=z9hG4bK4c0375a92a5d;rport
 Max-Forwards: 70
-From: <sip:1000@127.0.0.1:40553>;tag=c4be8c22ab66
-To: <sip:447700900999@127.0.0.1>;tag=7ac924a43149
-Call-ID: 66ceb895fb81@127.0.0.1
+From: <sip:1000@127.0.0.1:34853>;tag=9dc4416f8d2c
+To: <sip:447700900999@127.0.0.1>;tag=e43baad4b42b
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 ACK
 Route: <sip:127.0.0.1:6060;lr=on>
 Route: <sip:127.0.0.1:6061;lr=on>
-=== +02013 ms (unix 1795606868777) RECV udp 127.0.0.1:6061 -> 127.0.0.1:5072 len=483 redacted=no endpoint=pbx_b
+=== +01971 ms (unix 1795624448318) RECV udp 127.0.0.1:6061 -> 127.0.0.1:5072 len=483 redacted=no endpoint=pbx_b
 ACK sip:pbx_b@127.0.0.1:5072 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:6061;branch=z9hG4bKdb59.a90f2f198b95657cc6d6c53bf3da6a11.0
-Via: SIP/2.0/UDP 127.0.0.1:6060;rport=6060;branch=z9hG4bKdb59.c9b71bb7f23224bc976e3946c9dfc36d.0
-Via: SIP/2.0/UDP 127.0.0.1:40553;received=127.0.0.1;branch=z9hG4bKff3a4804fc86;rport=40553
+Via: SIP/2.0/UDP 127.0.0.1:6061;branch=z9hG4bKd005.b9d51efaecabe0383d3b926981f05ec9.0
+Via: SIP/2.0/UDP 127.0.0.1:6060;rport=6060;branch=z9hG4bKd005.382be185a971361cb5058d2c41eb3f76.0
+Via: SIP/2.0/UDP 127.0.0.1:34853;received=127.0.0.1;branch=z9hG4bK4c0375a92a5d;rport=34853
 Max-Forwards: 68
-From: <sip:1000@127.0.0.1:40553>;tag=c4be8c22ab66
-To: <sip:447700900999@127.0.0.1>;tag=7ac924a43149
-Call-ID: 66ceb895fb81@127.0.0.1
+From: <sip:1000@127.0.0.1:34853>;tag=9dc4416f8d2c
+To: <sip:447700900999@127.0.0.1>;tag=e43baad4b42b
+Call-ID: ecd09834432a@127.0.0.1
 CSeq: 1 ACK

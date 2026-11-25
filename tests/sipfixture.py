@@ -414,6 +414,11 @@ class Uac(SipEndpoint):
         # mean the leaf never saw, or never absorbed, our ACK).
         self.final_count = 0
         self.final_to: Optional[str] = None
+        # Headers of the INVITE's first final response.
+        self.final_headers: list[tuple[str, str]] = []
+        # 2xx responses to the INVITE that should never reach a caller: after
+        # a non-2xx final, or from a second PBX (another To tag).
+        self.stray_2xx = 0
         # Final status of each in-dialog request the UAC sent, by method
         # ("re-INVITE" for an in-dialog INVITE).
         self.dialog_responses: dict[str, int] = {}
@@ -571,11 +576,16 @@ class Uac(SipEndpoint):
         if self.final_status is None:
             self.final_status = message.status
             self.final_at = round(self.harness.now, 3)
+            self.final_headers = list(message.headers)
         if message.status == self.final_status:
             self.final_count += 1
         if 200 <= message.status < 300:
             # A 2xx after a final non-2xx belongs to an abandoned branch.
             if self.final_status >= 300:
+                self.stray_2xx += 1
+                return
+            if self.dialog is not None and message.to_tag != self.dialog.remote_tag:
+                self.stray_2xx += 1
                 return
             self._learn_dialog(message)
             if self.auto_ack and not self.acked_2xx:
@@ -603,6 +613,9 @@ class FakePbx(SipEndpoint):
         "ring_then_200": [(0.15, 180), (0.8, 200)],
         "ring_then_500": [(0.15, 180), (0.8, 500)],
         "late_200": [(0.15, 180), (2.8, 200)],
+        # No response until 200 at 2.5 s, after the leaf's 2 s attempt timer
+        # has moved on: a late 2xx on an abandoned attempt.
+        "silent_then_late_200": [(2.5, 200)],
         # 100 Trying then nothing: stops the attempt timer, so only the setup
         # deadline (no 18x within 8 s of the INVITE) ends the call.
         "trying_then_silent": [(0.0, 100)],
@@ -778,6 +791,9 @@ class FakePbx(SipEndpoint):
             return
 
         if message.method == "ACK":
+            # The ACK for a non-2xx final reuses the INVITE's transaction
+            # (same branch); the ACK for a 2xx is a new transaction.
+            self.requests_received.append("ACK" if key in self.transactions else "ACK-2xx")
             return
 
         self.requests_received.append(message.method)

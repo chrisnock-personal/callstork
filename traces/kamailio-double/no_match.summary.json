@@ -13,8 +13,9 @@
   },
   "observed": {
     "final_status": 404,
-    "final_at": 0.013,
+    "final_at": 0.022,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       404
     ],

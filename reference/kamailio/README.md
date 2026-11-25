@@ -14,8 +14,8 @@ kamailio -f reference/kamailio/kamailio.cfg -DD -E -e
 ```
 
 Syntax was checked with Kamailio 6.1 (`kamailio -c`, also with
-`-A DOUBLE_RR`) using the `ghcr.io/kamailio/kamailio-ci` image. All 28
-scenarios (24 from §9, four added in review) pass in both modes; the traces are in `traces/kamailio/` and
+`-A DOUBLE_RR`) using the `ghcr.io/kamailio/kamailio-ci` image. All 31
+scenarios (24 from §9, seven added since) pass in both modes; the traces are in `traces/kamailio/` and
 `traces/kamailio-double/`. No service is left running.
 
 It listens by default on:
@@ -90,6 +90,21 @@ address/port, which keeps the fake UAC behind NAT-style source ports happy.
   branches produce local `503`.
 - INVITEs get `100 Trying` automatically. CANCEL and ACK for local non-2xx
   responses are absorbed by tm; 2xx ACKs without a Route set are forwarded.
+- Every local `503` (no healthy member, all members failed, setup deadline
+  passed) carries `Retry-After: 30` (`RETRY_AFTER`).
+- A late 2xx on an attempt the leaf has given up on is never relayed (spec
+  §6.4): the caller would get a second, unwanted dialog. The leaf sends that
+  PBX an ACK and a BYE itself (`route[KILL_LATE_2XX]`, `t_uac_send`). Two
+  places catch it. While the call's transaction is alive, `onreply_route`
+  checks the reply's branch against the live attempt (`$avp(cur_branch)`), a
+  caller CANCEL, or a final error already sent. Once tm has finished with the
+  transaction it no longer matches the reply ("late reply ... terminated
+  phase") and the core would forward it along the `Via`, so `reply_route`
+  checks an `htable` entry per Call-ID: `pending` until a 2xx is relayed, then
+  that 2xx's To tag. A matching To tag is a retransmission of the winning 2xx
+  and is relayed (RFC 6026); anything else is ACKed and BYEd. With no entry
+  (expired after 5 min, or the leaf restarted) the reply is relayed as before,
+  so a restart can't hang up a good call.
 - In-dialog BYE/re-INVITE/OPTIONS are loose-routed. `ds_load_update()` on BYE
   and on 2xx keeps least-calls counters from drifting.
 
@@ -160,8 +175,6 @@ Two things to know when pointing it at FreePBX:
 
 ## Known deviations to reconcile in Phase 1
 
-- The `503` sent for an exhausted pool or a passed deadline has no
-  `Retry-After` header, which spec §6.12 asks for.
 - The per-peer `match_field` is encoded in the address-list group id, not as a
   named field.
 - Health `accept: [200]` is implicit: dispatcher treats any final OPTIONS reply

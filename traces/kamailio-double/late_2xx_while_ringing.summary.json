@@ -1,0 +1,66 @@
+{
+  "scenario": "late_2xx_while_ringing",
+  "description": "PBX A is silent, so the leaf moves on to PBX B, which rings. A then answers late while the call is still alive: the leaf ACKs and BYEs A's 200 without relaying it, the caller keeps ringing on B, and then cancels.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 487,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": false,
+    "cancelled": true,
+    "final_count": 1,
+    "ruri_user": "07700900999",
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 487,
+    "final_at": 3.524,
+    "final_count": 1,
+    "stray_2xx": 0,
+    "responses": [
+      100,
+      180,
+      200,
+      487
+    ],
+    "cancelled": true,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": [
+        "sip:07700900999@127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ],
+      "b": [
+        "ACK"
+      ]
+    },
+    "hooks": []
+  },
+  "trace": "late_2xx_while_ringing.sip.txt",
+  "notes": []
+}

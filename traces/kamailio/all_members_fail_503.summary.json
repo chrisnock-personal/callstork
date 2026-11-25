@@ -1,0 +1,59 @@
+{
+  "scenario": "all_members_fail_503",
+  "description": "Every pool member answers 5xx before ringing: the leaf tries each in turn, then answers the caller 503 with Retry-After.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 503,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": false,
+    "final_count": 1,
+    "ruri_user": "07700900999",
+    "final_headers": {
+      "Retry-After": "30"
+    }
+  },
+  "observed": {
+    "final_status": 503,
+    "final_at": 0.024,
+    "final_count": 1,
+    "stray_2xx": 0,
+    "responses": [
+      100,
+      503
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": [
+        "sip:07700900999@127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [
+        "ACK"
+      ],
+      "b": [
+        "ACK"
+      ]
+    },
+    "hooks": []
+  },
+  "trace": "all_members_fail_503.sip.txt",
+  "notes": []
+}

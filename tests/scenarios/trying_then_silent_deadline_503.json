@@ -30,6 +30,9 @@
       8.7
     ],
     "ruri_user": "07700900999",
-    "final_count": 1
+    "final_count": 1,
+    "final_headers": {
+      "Retry-After": "30"
+    }
   }
 }

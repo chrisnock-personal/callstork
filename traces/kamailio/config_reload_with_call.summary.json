@@ -23,8 +23,9 @@
   },
   "observed": {
     "final_status": 200,
-    "final_at": 0.022,
+    "final_at": 0.023,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       200,
@@ -49,6 +50,7 @@
     },
     "pbx_received": {
       "a": [
+        "ACK-2xx",
         "BYE"
       ],
       "b": []
@@ -57,8 +59,8 @@
       {
         "action": "reload_config",
         "command": "podman exec sip-leaf-ref-single kamcmd -s unix:/tmp/kamailio_sleaf_ctl dispatcher.reload >/dev/null && podman exec sip-leaf-ref-single kamcmd -s unix:/tmp/kamailio_sleaf_ctl permissions.addressReload >/dev/null",
-        "at": 0.521,
-        "seconds": 0.471,
+        "at": 0.522,
+        "seconds": 0.56,
         "returncode": 0,
         "stderr": ""
       }

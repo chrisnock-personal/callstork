@@ -56,8 +56,8 @@ docs/
 - A stdlib-only Python harness that stands up two controllable fake PBX UASs
   and a UAC, captures verbatim, timestamped SIP traces, and asserts the observable outcome of a scenario, including the
   Request-URI every fake PBX receives.
-- Captured reference traces for all 28 scenarios (24 from spec §9, plus
-  `test_line_fixed_target` and three setup-deadline scenarios) in both `Record-Route` modes
+- Captured reference traces for all 31 scenarios (24 from spec §9, seven
+  added since) in both `Record-Route` modes
   (`traces/`), plus a compile-only `sipgo` API probe documenting the stack
   decision (`docs/probes/sipgo-compile/`).
 
@@ -69,7 +69,7 @@ Run the parser/message unit tests:
 python3 -m unittest discover -s tests -v
 ```
 
-Run the full 28-scenario suite against the Kamailio reference (a throwaway
+Run the full 31-scenario suite against the Kamailio reference (a throwaway
 container per scenario, ports 6060/6061):
 
 ```sh
