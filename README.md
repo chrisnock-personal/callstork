@@ -1,4 +1,4 @@
-# SIP Leaf (working name)
+# CallStork
 
 **Status:** Phase 0 — reference implementation and test harness, no product code yet.
 
@@ -8,11 +8,15 @@ contract, the reference config and the wire scenarios.
 Decisions made so far: [`docs/decisions.md`](docs/decisions.md).
 Stack probe: [`docs/stack-probe.md`](docs/stack-probe.md).
 
-SIP Leaf is a carrier-facing (more generally, *peer-facing*) inbound SIP dispatcher:
+CallStork is a carrier-facing (more generally, *peer-facing*) inbound SIP dispatcher:
 it matches the dialled number, applies ordered rules and rewrites, and distributes
 each call to one member of a pool of PBXs. It is a transaction-stateful proxy, not
 a B2BUA: `From`/`To` and SDP are left alone, and `Record-Route` keeps it in the
 signalling path without requiring dialog-state lookup.
+
+The project was called SIP Leaf while it was being designed. Its docs, tests
+and reference config still call the dispatcher role "the leaf": the peer-facing
+leaf in front of the PBXs.
 
 ## Scope correction from the design review
 
@@ -51,7 +55,7 @@ docs/
 
 - A Kamailio reference config covering matching, dispatch, serial failover,
   `Record-Route`, loose routing, local responses and health probing.
-- A config contract that the future `sip-leaf check` / `sip-leaf test` commands
+- A config contract that the future `callstork check` / `callstork test` commands
   will consume.
 - A stdlib-only Python harness that stands up two controllable fake PBX UASs
   and a UAC, captures verbatim, timestamped SIP traces, and asserts the observable outcome of a scenario, including the

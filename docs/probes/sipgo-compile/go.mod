@@ -1,4 +1,4 @@
-module sip-leaf-sipgo-probe
+module callstork-sipgo-probe
 
 go 1.25
 

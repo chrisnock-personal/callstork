@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Harness unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Shell scripts parse
+        run: for f in tests/*.sh; do bash -n "$f"; done
+      - name: Secrets in the history
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Every wire scenario against a fresh Kamailio reference per scenario, with
+  # one Record-Route header and with the RFC 5658 pair.
+  reference:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [single, double]
+    steps:
+      - uses: actions/checkout@v7
+      - name: Kamailio image
+        run: podman pull -q ghcr.io/kamailio/kamailio-ci:latest
+      - name: Reference suite (${{ matrix.mode }} Record-Route)
+        run: REF_MODE=${{ matrix.mode }} tests/run_ref_suite.sh out/kamailio-${{ matrix.mode }}
+      - name: Keep the traces
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: traces-${{ matrix.mode }}
+          path: out/

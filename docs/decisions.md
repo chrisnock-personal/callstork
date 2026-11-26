@@ -17,10 +17,13 @@ These answer the open questions in the (unpublished) design spec, §11. They are
 
 ## Working name
 
-The spec calls "SIP Leaf" provisional and asks for a rename before code. No name
-was chosen in this review, so the repository keeps `sip-leaf` as a container and
-avoids embedding the name in config keys, SIP headers or metrics. Rename before
-Phase 1 product code if desired; the harness and reference config are unaffected.
+The spec called "SIP Leaf" provisional and asked for a rename before code. The
+name is **CallStork** (decided 2026-11-25, #4): it delivers each call to the
+right home, and it joins the family of call tools named after birds. The binary
+and its commands are `callstork` (`callstork check`, `callstork test`) and the
+repository is `callstork`. The name stays out of config keys, SIP headers and
+metric labels, so a later rename would not change the wire behaviour or the
+config contract. The docs and tests keep "the leaf" for the dispatcher role.
 
 ## What changed from the spec's examples
 
