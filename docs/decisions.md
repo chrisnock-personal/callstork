@@ -32,3 +32,11 @@ config contract. The docs and tests keep "the leaf" for the dispatcher role.
   registration trunks and for PBXs that send the DID in `To`.
 - `register:` is retained as an optional peer block but marked "not in v1".
 - Source allowlists are per peer group, not a single global carrier CIDR list.
+
+## Go version (2026-11-25)
+
+Phase 1 code targets **Go 1.26**, not the 1.25 used for the stack probe:
+`sipgo` v1.7.4 pulls in `github.com/gobwas/ws`, whose fix for GO-2026-6940
+(unbounded allocation from a peer-declared frame length) is in v1.5.0, which
+requires Go 1.26. `govulncheck` runs in CI and reports no known
+vulnerabilities.
