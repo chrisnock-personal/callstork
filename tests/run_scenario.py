@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run one SIP Leaf wire scenario against a dispatcher (Kamailio or the leaf)."""
+"""Run one CallStork wire scenario against a dispatcher (Kamailio or the leaf)."""
 
 from __future__ import annotations
 

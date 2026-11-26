@@ -1,4 +1,4 @@
-# Intended YAML contract for the future `sip-leaf` binary.
+# Intended YAML contract for the future `callstork` binary.
 # This is the source of truth for the CLI checker/tester; the Kamailio reference
 # in ../reference/kamailio implements the same behaviour in its own format.
 version: 1
