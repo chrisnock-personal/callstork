@@ -149,6 +149,13 @@ The files in `scenarios/` are named after spec §9:
 | `deadline_across_attempts` | (spec §6.3) the 8 s deadline counts from the caller's INVITE, not per attempt |
 | `long_ringing_then_200` | (spec §6.3) the deadline ends at the first 18x; a call may ring past 8 s |
 
+## Against a real PBX
+
+`run_real_pbx.sh` runs seven cases through the reference to a real PBX instead
+of the fake ones, with a real SDP offer and an RTP check. Setup, the PBX
+dialplan and removal: [`docs/real-pbx.md`](../docs/real-pbx.md).
+`tools/ladder.py` draws any call from a `tcpdump -A` capture.
+
 ## Limitations
 
 - UDP/IPv4 only; no TCP, TLS, RTP or media checks.

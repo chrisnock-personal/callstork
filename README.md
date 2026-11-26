@@ -42,12 +42,16 @@ tests/
   run_ref_suite.sh      run all scenarios against a fresh Kamailio reference
   scenarios/*.json      named wire scenarios from spec §9
   test_fixture.py       unit tests for parsing/message building
+  real_pbx.py           one real call through the leaf to a real PBX
+  run_real_pbx.sh       the seven real-PBX cases (real_pbx_cases.json)
+  tools/ladder.py       draw a call from a tcpdump capture
 traces/
   kamailio/             captured traces, single Record-Route
   kamailio-double/      captured traces, RFC 5658 double Record-Route
 docs/
   decisions.md          decisions and open questions
   stack-probe.md        Go/sipgo vs Rust/rvoip-sip evaluation
+  real-pbx.md           testing against a real PBX (FreePBX/Asterisk setup)
   probes/sipgo-compile/ compile-only sipgo API check (not product code)
 ```
 
