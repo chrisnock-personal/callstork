@@ -1,0 +1,43 @@
+{
+  "name": "late_2xx_while_ringing",
+  "description": "PBX A is silent, so the leaf moves on to PBX B, which rings. A then answers late while the call is still alive: the leaf ACKs and BYEs A's 200 without relaying it, the caller keeps ringing on B, and then cancels.",
+  "duration": 5,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "silent_then_late_200"
+    },
+    "b": {
+      "behavior": "ring_until_cancel"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    },
+    {
+      "at": 3.5,
+      "action": "cancel"
+    }
+  ],
+  "expect": {
+    "final_status": 487,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": false,
+    "cancelled": true,
+    "final_count": 1,
+    "ruri_user": "07700900999",
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ]
+    }
+  }
+}

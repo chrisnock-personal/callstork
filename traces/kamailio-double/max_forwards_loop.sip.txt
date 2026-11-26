@@ -1,30 +1,30 @@
-=== +00011 ms (unix 1795606904998) SEND udp 127.0.0.1:34754 -> 127.0.0.1:6060 len=361 redacted=no endpoint=uac
+=== +00011 ms (unix 1795624497643) SEND udp 127.0.0.1:48490 -> 127.0.0.1:6060 len=361 redacted=no endpoint=uac
 INVITE sip:447700900999@127.0.0.1:6060 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:34754;branch=z9hG4bKd030f37c879b;rport
+Via: SIP/2.0/UDP 127.0.0.1:48490;branch=z9hG4bKcfee83766eba;rport
 Max-Forwards: 0
-From: <sip:1000@127.0.0.1>;tag=dfe799221879
+From: <sip:1000@127.0.0.1>;tag=0efccb4fa5d7
 To: <sip:447700900999@127.0.0.1>
-Call-ID: dc616b77ac35@127.0.0.1
+Call-ID: 4fa9148a034c@127.0.0.1
 CSeq: 1 INVITE
-Contact: <sip:1000@127.0.0.1:34754>
+Contact: <sip:1000@127.0.0.1:48490>
 Content-Type: application/sdp
 
 v=0
 o=- 1 1 IN IP4 127.0.0.1
-=== +00012 ms (unix 1795606904998) RECV udp 127.0.0.1:6060 -> 127.0.0.1:34754 len=355 redacted=no endpoint=uac
+=== +00011 ms (unix 1795624497643) RECV udp 127.0.0.1:6060 -> 127.0.0.1:48490 len=355 redacted=no endpoint=uac
 SIP/2.0 483 Too Many Hops
-Via: SIP/2.0/UDP 127.0.0.1:34754;branch=z9hG4bKd030f37c879b;rport=34754;received=127.0.0.1
-From: <sip:1000@127.0.0.1>;tag=dfe799221879
-To: <sip:447700900999@127.0.0.1>;tag=65df06a3e5179bc63e06e260bb8902e5.c0e22103
-Call-ID: dc616b77ac35@127.0.0.1
+Via: SIP/2.0/UDP 127.0.0.1:48490;branch=z9hG4bKcfee83766eba;rport=48490;received=127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=0efccb4fa5d7
+To: <sip:447700900999@127.0.0.1>;tag=65df06a3e5179bc63e06e260bb8902e5.34c03b9a
+Call-ID: 4fa9148a034c@127.0.0.1
 CSeq: 1 INVITE
 Server: kamailio (6.1.5 (x86_64/Linux))
 Content-Length: 0
-=== +00012 ms (unix 1795606904998) SEND udp 127.0.0.1:34754 -> 127.0.0.1:6060 len=302 redacted=no endpoint=uac
+=== +00011 ms (unix 1795624497643) SEND udp 127.0.0.1:48490 -> 127.0.0.1:6060 len=302 redacted=no endpoint=uac
 ACK sip:447700900999@127.0.0.1:6060 SIP/2.0
-Via: SIP/2.0/UDP 127.0.0.1:34754;branch=z9hG4bKd030f37c879b;rport
+Via: SIP/2.0/UDP 127.0.0.1:48490;branch=z9hG4bKcfee83766eba;rport
 Max-Forwards: 0
-From: <sip:1000@127.0.0.1>;tag=dfe799221879
-To: <sip:447700900999@127.0.0.1>;tag=65df06a3e5179bc63e06e260bb8902e5.c0e22103
-Call-ID: dc616b77ac35@127.0.0.1
+From: <sip:1000@127.0.0.1>;tag=0efccb4fa5d7
+To: <sip:447700900999@127.0.0.1>;tag=65df06a3e5179bc63e06e260bb8902e5.34c03b9a
+Call-ID: 4fa9148a034c@127.0.0.1
 CSeq: 1 ACK

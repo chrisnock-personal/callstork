@@ -1,0 +1,44 @@
+{
+  "name": "late_2xx_after_deadline_503",
+  "description": "PBX A sends 100 Trying, the 8 s setup deadline ends the call with a local 503, then A's 200 crosses the leaf's CANCEL. The leaf ACKs and BYEs that 200; the caller keeps its single 503.",
+  "duration": 11,
+  "uac": {
+    "number": "447700900999"
+  },
+  "pbxs": {
+    "a": {
+      "behavior": "trying_then_late_200"
+    },
+    "b": {
+      "behavior": "answer_200"
+    }
+  },
+  "steps": [
+    {
+      "at": 0,
+      "action": "invite"
+    }
+  ],
+  "expect": {
+    "final_status": 503,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "final_after": [
+      7.5,
+      8.7
+    ],
+    "ruri_user": "07700900999",
+    "final_count": 1,
+    "final_headers": {
+      "Retry-After": "30"
+    },
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ]
+    }
+  }
+}

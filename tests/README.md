@@ -88,7 +88,11 @@ A scenario has:
   final arrived; above 1 means the leaf retransmitted it, i.e. our ACK was not
   absorbed), `dialog_responses` (final status of each in-dialog request the
   UAC sent, by method, `re-INVITE` for an in-dialog INVITE) and `pbx_received`
-  (in-dialog requests a PBX must have received). `--expect-record-routes N`
+  (in-dialog requests a PBX must have received; `ACK` is the ACK for a non-2xx
+  final, `ACK-2xx` the end-to-end ACK for a 2xx), and `final_headers`
+  (`{"Retry-After": "30"}`: headers the INVITE's final response must carry).
+  Also always checked: the caller must never receive a **stray 2xx**, one
+  after a non-2xx final or from a second PBX (another To tag). `--expect-record-routes N`
   overrides only scenarios that already assert `record_routes`.
 
 The UAC ACKs every non-2xx final (and each retransmission of it) with the
@@ -114,6 +118,7 @@ PBX behaviours:
 | `late_200` | 180 at 0.15 s, 200 at 2.8 s, even after CANCEL |
 | `trying_then_silent` | 100 Trying at once, then nothing (stops the attempt timer; only the setup deadline ends it) |
 | `ring_long_then_200` | 180 at 0.15 s, 200 at 12 s (rings past the 8 s setup deadline) |
+| `silent_then_late_200` | nothing until 200 at 2.5 s, after the 2 s attempt timer has moved on |
 
 ## Scenario coverage
 
@@ -129,7 +134,9 @@ The files in `scenarios/` are named after spec §9:
 | `ring_then_5xx_no_failover` | final after 180 is terminal |
 | `all_down_503` | no active members → local 503 |
 | `cancel_before_provisional`, `cancel_during_ringing`, `cancel_between_attempts`, `cancel_after_200` | CANCEL races |
-| `late_2xx_abandoned_branch` | late 2xx absorbed |
+| `late_2xx_abandoned_branch` | late 2xx after CANCEL: not relayed; the leaf ACKs and BYEs it |
+| `late_2xx_after_failover`, `late_2xx_while_ringing` | (spec §6.4) a late 2xx from an abandoned attempt, after the next member answered or while it rings: ACK and BYE, caller keeps one dialog |
+| `all_members_fail_503` | every member 5xx: each tried, then 503 with `Retry-After` |
 | `non_2xx_ack_absorbed` | ACK for local final absorbed |
 | `invite_retransmission_failover` | retransmission during failover does not fork |
 | `twoxx_retransmission` | 2xx retransmission reaches the UAC |

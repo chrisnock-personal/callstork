@@ -21,6 +21,7 @@
     "final_status": 200,
     "final_at": 0.013,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       200
@@ -43,7 +44,9 @@
     },
     "dialog_responses": {},
     "pbx_received": {
-      "a": [],
+      "a": [
+        "ACK-2xx"
+      ],
       "b": []
     },
     "hooks": []

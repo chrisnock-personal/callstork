@@ -176,6 +176,7 @@ def evaluate(
         "final_status": uac.final_status,
         "final_at": uac.final_at,
         "final_count": uac.final_count,
+        "stray_2xx": uac.stray_2xx,
         "responses": [status for status, _ in uac.responses],
         "cancelled": uac.cancelled,
         "dialog": uac.dialog is not None,
@@ -195,6 +196,16 @@ def evaluate(
             errors.append(
                 f"{hook['action']} hook exited {hook['returncode']}: {hook['stderr']}"
             )
+
+    # Always checked: the caller must never see a 2xx it can't use (after a
+    # non-2xx final, or from a second PBX). The leaf ACKs and BYEs those.
+    if uac.stray_2xx:
+        errors.append(f"caller got {uac.stray_2xx} stray 2xx (late answer relayed)")
+
+    for name, value in expected.get("final_headers", {}).items():
+        got = [v for n, v in uac.final_headers if n.lower() == name.lower()]
+        if value not in got:
+            errors.append(f"final response header {name}: {got or 'missing'}, expected {value!r}")
 
     if "final_after" in expected:
         low, high = expected["final_after"]

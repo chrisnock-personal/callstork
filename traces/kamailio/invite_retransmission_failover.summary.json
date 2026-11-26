@@ -16,8 +16,9 @@
   },
   "observed": {
     "final_status": 200,
-    "final_at": 1.986,
+    "final_at": 1.957,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       100,
@@ -43,7 +44,9 @@
     "dialog_responses": {},
     "pbx_received": {
       "a": [],
-      "b": []
+      "b": [
+        "ACK-2xx"
+      ]
     },
     "hooks": []
   },

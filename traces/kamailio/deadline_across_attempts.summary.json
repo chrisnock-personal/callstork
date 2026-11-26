@@ -17,12 +17,16 @@
       8.7
     ],
     "ruri_user": "07700900999",
-    "final_count": 1
+    "final_count": 1,
+    "final_headers": {
+      "Retry-After": "30"
+    }
   },
   "observed": {
     "final_status": 503,
-    "final_at": 8.052,
+    "final_at": 8.037,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       503
@@ -46,7 +50,9 @@
     "dialog_responses": {},
     "pbx_received": {
       "a": [],
-      "b": []
+      "b": [
+        "ACK"
+      ]
     },
     "hooks": []
   },

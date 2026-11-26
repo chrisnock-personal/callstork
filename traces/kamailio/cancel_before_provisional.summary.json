@@ -14,8 +14,9 @@
   },
   "observed": {
     "final_status": 487,
-    "final_at": 1.969,
+    "final_at": 2.011,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       200,

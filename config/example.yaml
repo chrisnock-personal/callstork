@@ -9,6 +9,9 @@ defaults:
   max_forwards: 70
   attempt_timeout: 2s
   setup_deadline: 8s
+  # Retry-After on every local 503 (no healthy member, all members failed,
+  # setup deadline passed). Overridable per pool.
+  retry_after: 30s
 
 listen:
   # The peer-facing and PBX-facing sockets. If both addresses are equal, one

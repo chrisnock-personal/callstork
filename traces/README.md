@@ -1,11 +1,11 @@
 # Reference traces
 
-These are the captured outputs of all 28 scenarios in `tests/scenarios/` (24
-from spec §9, `test_line_fixed_target`, and three setup-deadline scenarios) run
-against the Kamailio reference config on 2026-11-25, re-captured after the
-review fixes (failover Request-URI, per-call setup deadline, ringing past 8 s,
-real restart/reload hooks, UAC ACKs for non-2xx finals). They were run on the
-WSL2 with `REF_NET=pod`.
+These are the captured outputs of all 31 scenarios in `tests/scenarios/` (24
+from spec §9 and seven added since: `test_line_fixed_target`, three
+setup-deadline scenarios, `all_members_fail_503`, `late_2xx_after_failover` and
+`late_2xx_while_ringing`) run against the Kamailio reference config, last
+re-captured on 2026-11-25 after the late-2xx and `Retry-After` fixes (#1, #2).
+They were run on WSL2 with `REF_NET=pod`.
 
 | Directory | Mode | How it was started |
 |---|---|---|

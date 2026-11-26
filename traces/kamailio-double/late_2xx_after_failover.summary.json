@@ -1,0 +1,70 @@
+{
+  "scenario": "late_2xx_after_failover",
+  "description": "PBX A is silent, so the 2 s attempt timer moves on to PBX B, which answers. A then answers late: the leaf ACKs and BYEs A's 200 instead of relaying it, and the caller keeps one dialog, with B.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 200,
+    "pbx_used": [
+      "a",
+      "b"
+    ],
+    "dialog": true,
+    "record_routes": 2,
+    "final_after": [
+      1.9,
+      2.3
+    ],
+    "ruri_user": "07700900999",
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ],
+      "b": [
+        "ACK-2xx"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 200,
+    "final_at": 1.972,
+    "final_count": 1,
+    "stray_2xx": 0,
+    "responses": [
+      100,
+      200
+    ],
+    "cancelled": false,
+    "dialog": true,
+    "record_routes": 2,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 1
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": [
+        "sip:07700900999@127.0.0.1:5072"
+      ]
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ],
+      "b": [
+        "ACK-2xx"
+      ]
+    },
+    "hooks": []
+  },
+  "trace": "late_2xx_after_failover.sip.txt",
+  "notes": []
+}

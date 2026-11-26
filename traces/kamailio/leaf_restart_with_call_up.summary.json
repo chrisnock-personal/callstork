@@ -23,8 +23,9 @@
   },
   "observed": {
     "final_status": 200,
-    "final_at": 0.089,
+    "final_at": 0.013,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       200,
@@ -49,6 +50,7 @@
     },
     "pbx_received": {
       "a": [
+        "ACK-2xx",
         "BYE"
       ],
       "b": []
@@ -57,8 +59,8 @@
       {
         "action": "restart_leaf",
         "command": "podman restart -t 0 sip-leaf-ref-single >/dev/null && sh -c 'for i in $(seq 50); do podman exec sip-leaf-ref-single kamcmd -s unix:/tmp/kamailio_sleaf_ctl core.version >/dev/null 2>&1 && exit 0; sleep 0.1; done; exit 1'",
-        "at": 0.586,
-        "seconds": 0.467,
+        "at": 0.512,
+        "seconds": 0.48,
         "returncode": 0,
         "stderr": ""
       }

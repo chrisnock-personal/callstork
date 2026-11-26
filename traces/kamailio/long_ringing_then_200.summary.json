@@ -27,8 +27,9 @@
   },
   "observed": {
     "final_status": 200,
-    "final_at": 12.024,
+    "final_at": 12.025,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       100,
       180,
@@ -54,6 +55,7 @@
     },
     "pbx_received": {
       "a": [
+        "ACK-2xx",
         "BYE"
       ],
       "b": []

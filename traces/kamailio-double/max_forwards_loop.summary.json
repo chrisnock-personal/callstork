@@ -16,6 +16,7 @@
     "final_status": 483,
     "final_at": 0.012,
     "final_count": 1,
+    "stray_2xx": 0,
     "responses": [
       483
     ],
