@@ -31,7 +31,7 @@ caller=${CALLER_ADDR:-$LEAF_ADDR}
 dead=${DEAD_MEMBER:-192.0.2.1:5060}
 rtp_port=${RTP_PORT:-40000}
 image=${KAMAILIO_IMAGE:-ghcr.io/kamailio/kamailio-ci:latest}
-container=${REF_CONTAINER:-sip-leaf-real-pbx}
+container=${REF_CONTAINER:-callstork-real-pbx}
 ctl=unix:/tmp/kamailio_sleaf_ctl
 pbx_host=${PBX%:*}
 

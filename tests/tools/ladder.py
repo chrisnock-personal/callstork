@@ -75,7 +75,7 @@ def render(args: argparse.Namespace) -> str:
                 lanes.append(a)
     lane = lambda a: 1 if is_leaf(a) else lanes.index(a)  # noqa: E731
     names = [labels.get(first["src"], "Caller") + f"<br><small>{first['src']}</small>",
-             f"SIP Leaf<br><small>{args.leaf}:{args.leaf_ports.split(',')[0]}</small>"]
+             f"CallStork<br><small>{args.leaf}:{args.leaf_ports.split(',')[0]}</small>"]
     names += [html.escape(labels.get(a, a.rsplit(':', 1)[0])) + f"<br><small>{a}</small>" for a in lanes[2:]]
 
     seen: dict = {}
