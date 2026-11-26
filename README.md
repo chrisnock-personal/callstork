@@ -75,7 +75,20 @@ go build -o callstork ./cmd/callstork          # Go 1.26
 ```
 
 Exit status: 0 with no errors (warnings allowed), 1 with errors (or warnings
-under `--strict`), 2 when the file can't be read. Without a local Go:
+under `--strict`), 2 when the file can't be read.
+
+`callstork run` is the proxy itself (#6): peers, rules, pools with
+least-calls or first-available and OPTIONS health checks, serial failover with
+the 2 s attempt timer and the 8 s setup deadline, Record-Route (one header, or
+the RFC 5658 pair when the two sides use different sockets), loose routing of
+in-dialog requests, CANCEL, and the 483/513 guards. SIGHUP reloads the config
+without dropping calls; `--trace` logs every SIP message. When a listen address
+is `0.0.0.0`, set `advertise` to the IP to put in Via and Record-Route.
+
+```sh
+./callstork run tests/leaf-lab.yaml          # the lab config the wire tests use
+LEAF_MODE=double tests/run_leaf_suite.sh     # every scenario against the binary
+``` Without a local Go:
 `podman run --rm -v "$PWD:/src:Z" -w /src golang:1.26-alpine go test ./...`.
 
 ## Quick start

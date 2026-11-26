@@ -1,0 +1,59 @@
+# The lab config for running the wire scenarios against the callstork binary
+# (tests/run_leaf_suite.sh). It mirrors the Kamailio reference: the same
+# peers, rules, pools and addresses. One socket for both sides means one
+# Record-Route; run_leaf_suite.sh moves `lan` to 6061 for the RFC 5658 pair.
+version: 1
+
+defaults:
+  strip_plus: true
+  strip_leading_zero: false
+  max_forwards: 70
+  attempt_timeout: 2s
+  setup_deadline: 8s
+
+listen:
+  peer: { address: 127.0.0.1, port: 6060 }
+  lan:  { address: 127.0.0.1, port: 6060 }
+
+peers:
+  - name: lab-uac
+    allow: [127.0.0.0/8]
+    match_field: request_uri_user
+
+rules:
+  - name: lab-failover
+    match: { methods: [INVITE], number: '^44(7700900999)$' }
+    action:
+      pool: lab-failover
+      rewrite:
+        request_uri: 'sip:0${1}@${selected_host}:${selected_port}'
+        add_headers: { X-Inbound-Rule: lab-failover }
+
+  - name: test-line
+    match: { number: '^447700900123$' }
+    action: { target: 'sip:127.0.0.1:5072' }
+
+  - name: inbound-dids
+    match: { methods: [INVITE], number: '^44(\d{10})$' }
+    action:
+      pool: dids
+      rewrite:
+        request_uri: 'sip:0${1}@${selected_host}:${selected_port}'
+        add_headers: { X-Inbound-Rule: inbound-dids }
+
+pools:
+  dids:
+    strategy: least-calls
+    health: { options_interval: 30s }
+    members:
+      - uri: 'sip:127.0.0.1:5071'
+      - uri: 'sip:127.0.0.1:5072'
+
+  lab-failover:
+    strategy: first-available
+    health: { options_interval: 30s }
+    members:
+      - uri: 'sip:127.0.0.1:5071'
+        priority: 10
+      - uri: 'sip:127.0.0.1:5072'
+        priority: 5

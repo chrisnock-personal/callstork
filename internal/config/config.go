@@ -81,6 +81,9 @@ type Socket struct {
 	Pos     Pos
 	Address Val[string]
 	Port    Val[int]
+	// Advertise is the address written into Via and Record-Route, needed
+	// when Address is 0.0.0.0 (or behind NAT).
+	Advertise Val[string]
 }
 
 type Peer struct {
@@ -344,8 +347,9 @@ func (p *parser) listen(n *yaml.Node, path string, l *Listen) {
 func (p *parser) socket(n *yaml.Node, path string) Socket {
 	s := Socket{Set: true, Pos: posOf(n)}
 	p.mapping(n, path, map[string]func(*yaml.Node, string){
-		"address": func(v *yaml.Node, sub string) { s.Address = p.str(v, sub) },
-		"port":    func(v *yaml.Node, sub string) { s.Port = p.integer(v, sub) },
+		"address":   func(v *yaml.Node, sub string) { s.Address = p.str(v, sub) },
+		"port":      func(v *yaml.Node, sub string) { s.Port = p.integer(v, sub) },
+		"advertise": func(v *yaml.Node, sub string) { s.Advertise = p.str(v, sub) },
 	})
 	return s
 }

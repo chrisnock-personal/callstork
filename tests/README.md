@@ -142,6 +142,17 @@ The files in `scenarios/` are named after spec §9:
 | `deadline_across_attempts` | (spec §6.3) the 8 s deadline counts from the caller's INVITE, not per attempt |
 | `long_ringing_then_200` | (spec §6.3) the deadline ends at the first 18x; a call may ring past 8 s |
 
+## Against the callstork binary
+
+`run_leaf_suite.sh` runs the same scenarios against the Go program with
+`tests/leaf-lab.yaml` (the reference's rules and pools), a fresh process per
+scenario, and real hooks: restart kills and restarts the binary, reload sends
+SIGHUP. `LEAF_MODE=double` moves the LAN socket to 6061 for the RFC 5658 pair.
+By default each scenario runs in its own network namespace (`unshare -rn`), so
+the loopback is a normal one even under WSL2; `LEAF_NET=host` uses the host's
+(CI does). `SCENARIOS="a b"` runs a subset; `LEAF_TRACE=1` puts every SIP
+message in `<scenario>.leaf.log`.
+
 ## Limitations
 
 - UDP/IPv4 only; no TCP, TLS, RTP or media checks.

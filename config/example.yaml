@@ -13,7 +13,8 @@ defaults:
 listen:
   # The peer-facing and PBX-facing sockets. If both addresses are equal, one
   # Record-Route is inserted; if different, two (RFC 5658: LAN/outgoing on top,
-  # peer-facing below).
+  # peer-facing below). When an address is 0.0.0.0, `advertise` gives the IP
+  # to put in Via and Record-Route (required to run).
   peer: { address: 0.0.0.0, port: 5060 }
   lan:  { address: 0.0.0.0, port: 5060 }
 
