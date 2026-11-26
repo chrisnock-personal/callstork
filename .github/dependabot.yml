@@ -1,0 +1,10 @@
+# Weekly update PRs, grouped so they come as one PR, not several. CI runs the
+# unit tests, the reference suite and gitleaks on each one before it's merged.
+version: 2
+updates:
+  - package-ecosystem: github-actions    # checkout, gitleaks
+    directory: /
+    schedule: { interval: weekly, day: monday }
+    groups:
+      actions:
+        patterns: ["*"]
