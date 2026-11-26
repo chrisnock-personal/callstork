@@ -619,6 +619,10 @@ class FakePbx(SipEndpoint):
         # 100 Trying then nothing: stops the attempt timer, so only the setup
         # deadline (no 18x within 8 s of the INVITE) ends the call.
         "trying_then_silent": [(0.0, 100)],
+        # 100 Trying, then a 200 just after the 8 s setup deadline: it crosses
+        # the leaf's CANCEL (so no 487), after the caller already has the
+        # local 503.
+        "trying_then_late_200": [(0.0, 100), (8.3, 200)],
         # Rings past the 8 s setup deadline; ringing must not be cut off.
         "ring_long_then_200": [(0.15, 180), (12.0, 200)],
     }
@@ -657,7 +661,7 @@ class FakePbx(SipEndpoint):
         status: int,
         extra: Optional[Iterable[tuple[str, str]]] = None,
     ) -> None:
-        if transaction["cancelled"] and status != 487 and self.behavior != "late_200":
+        if transaction["cancelled"] and status != 487 and self.behavior not in ("late_200", "trying_then_late_200"):
             return
         request: SipMessage = transaction["request"]
         peer: tuple[str, int] = transaction["peer"]
@@ -780,6 +784,8 @@ class FakePbx(SipEndpoint):
                     request.call_id == message.call_id
                     and not transaction["cancelled"]
                     and transaction["final_status"] == 0
+                    # Its 200 is already on the wire: no 487 (RFC 3261 9.2).
+                    and self.behavior != "trying_then_late_200"
                 ):
                     transaction["cancelled"] = True
                     self.harness.at(

@@ -97,7 +97,9 @@ address/port, which keeps the fake UAC behind NAT-style source ports happy.
   PBX an ACK and a BYE itself (`route[KILL_LATE_2XX]`, `t_uac_send`). Two
   places catch it. While the call's transaction is alive, `onreply_route`
   checks the reply's branch against the live attempt (`$avp(cur_branch)`), a
-  caller CANCEL, or a final error already sent. Once tm has finished with the
+  caller CANCEL, or a local 503 already sent (`$avp(final_sent)`: neither
+  `$T_reply_code`, which is the reply's own code there, nor `t_is_canceled()`,
+  which ignores the leaf's own CANCEL, can tell). Once tm has finished with the
   transaction it no longer matches the reply ("late reply ... terminated
   phase") and the core would forward it along the `Via`, so `reply_route`
   checks an `htable` entry per Call-ID: `pending` until a 2xx is relayed, then

@@ -1,0 +1,65 @@
+{
+  "scenario": "late_2xx_after_deadline_503",
+  "description": "PBX A sends 100 Trying, the 8 s setup deadline ends the call with a local 503, then A's 200 crosses the leaf's CANCEL. The leaf ACKs and BYEs that 200; the caller keeps its single 503.",
+  "leaf": "127.0.0.1:6060",
+  "result": "pass",
+  "ok": true,
+  "errors": [],
+  "expected": {
+    "final_status": 503,
+    "pbx_used": [
+      "a"
+    ],
+    "dialog": false,
+    "final_after": [
+      7.5,
+      8.7
+    ],
+    "ruri_user": "07700900999",
+    "final_count": 1,
+    "final_headers": {
+      "Retry-After": "30"
+    },
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ]
+    }
+  },
+  "observed": {
+    "final_status": 503,
+    "final_at": 8.005,
+    "final_count": 1,
+    "stray_2xx": 0,
+    "responses": [
+      100,
+      503
+    ],
+    "cancelled": false,
+    "dialog": false,
+    "record_routes": 0,
+    "received_requests": [],
+    "pbx_invites": {
+      "a": 1,
+      "b": 0
+    },
+    "pbx_invite_uris": {
+      "a": [
+        "sip:07700900999@127.0.0.1:5071"
+      ],
+      "b": []
+    },
+    "dialog_responses": {},
+    "pbx_received": {
+      "a": [
+        "ACK-2xx",
+        "BYE"
+      ],
+      "b": []
+    },
+    "hooks": []
+  },
+  "trace": "late_2xx_after_deadline_503.sip.txt",
+  "notes": []
+}
