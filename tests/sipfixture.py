@@ -1,4 +1,4 @@
-"""Dependency-light SIP fixtures for SIP Leaf wire tests.
+"""Dependency-light SIP fixtures for CallStork wire tests.
 
 The fixtures are deliberately not a SIP stack. They parse enough headers to
 drive the wire scenarios in tests/scenarios/ and write verbatim message traces
