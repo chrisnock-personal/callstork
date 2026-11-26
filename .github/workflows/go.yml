@@ -27,3 +27,25 @@ jobs:
         run: ./callstork check --strict config/example.yaml
       - name: Known vulnerabilities
         run: go run golang.org/x/vuln/cmd/govulncheck@latest ./...
+
+  # Every wire scenario against the callstork binary, a fresh process per
+  # scenario, with one Record-Route header and with the RFC 5658 pair.
+  leaf:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [single, double]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+      - name: Wire scenarios against the binary (${{ matrix.mode }} Record-Route)
+        run: LEAF_NET=host LEAF_MODE=${{ matrix.mode }} tests/run_leaf_suite.sh out/leaf-${{ matrix.mode }}
+      - name: Keep the traces and leaf logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: leaf-${{ matrix.mode }}
+          path: out/

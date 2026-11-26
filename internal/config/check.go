@@ -93,6 +93,11 @@ func (k *checker) listen() {
 		} else if _, err := netip.ParseAddr(s.sock.Address.V); err != nil {
 			k.errf(s.sock.Address.Pos, path+".address", "listen.%s.address %q is not an IP address", s.name, s.sock.Address.V)
 		}
+		if s.sock.Advertise.Set {
+			if a, err := netip.ParseAddr(s.sock.Advertise.V); err != nil || a.IsUnspecified() {
+				k.errf(s.sock.Advertise.Pos, path+".advertise", "listen.%s.advertise %q must be a specific IP address", s.name, s.sock.Advertise.V)
+			}
+		}
 		if !s.sock.Port.Set {
 			k.errf(s.sock.Pos, path+".port", "listen.%s.port is missing", s.name)
 		} else if s.sock.Port.V < 1 || s.sock.Port.V > 65535 {
